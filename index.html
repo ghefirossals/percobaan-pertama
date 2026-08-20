@@ -282,18 +282,22 @@
                 eyeIcon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>';
             }
         }
-        function updateTanggal() {
-            const opsi = { 
-                weekday: 'long', 
-                day: 'numeric', 
-                month: 'long', 
-                year: 'numeric' 
+       function updateTanggal() {
+    const opsi = { 
+        weekday: 'long', 
+        day: 'numeric', 
+        month: 'long', 
+        year: 'numeric' 
     };
     const hariIni = new Date().toLocaleDateString('id-ID', opsi);
     
     // Memasukkan teks tanggal ke tag HTML ber-ID 'current-date'
     document.getElementById('current-date').innerText = hariIni;
 }
+
+// Panggil fungsi langsung agar tanggal langsung muncul saat web dibuka
+updateTanggal();
+        
     </script>
 
 </body>
