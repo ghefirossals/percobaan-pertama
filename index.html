@@ -3,9 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Website Pertamaku</title>
+    
+    <!-- CSS: Untuk mengatur tampilan visual -->
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            text-align: center;
+            padding-top: 80px;
+        }
+        h1 {
+            color: #0070f3;
+        }
+        button {
+            background-color: #0070f3;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #0051a2;
+        }
+    </style>
 </head>
 <body>
-    <h1>Halo Dunia!</h1>
-    <p>Ini adalah website pertama saya.</p>
+
+    <h1>Halo Dunia! 👋</h1>
+    <p>Ini website pertamaku yang sudah punya struktur, desain, dan fungsi.</p>
+    
+    <!-- Tombol yang memicu JavaScript -->
+    <button onclick="tampilkanPesan()">Klik Saya!</button>
+
+    <!-- JAVASCRIPT: Untuk menambahkan fungsi/interaksi -->
+    <script>
+        function tampilkanPesan() {
+            alert("Selamat! Fitur JavaScript kamu berhasil berjalan 🎉");
+        }
+    </script>
+
 </body>
 </html>
