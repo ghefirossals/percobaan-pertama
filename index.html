@@ -17,6 +17,7 @@
             background-color: #f4f6f9;
             color: #333;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
@@ -24,10 +25,11 @@
 
         .date-display {
             font-size: 13px;
-            font-weight: 600;
-            color: #115c44; /* Warna hijau pekat senada dengan tombol */
-            margin-bottom: 10px;
+            font-weight: 500;
+            color: #718096; /* Warna hijau pekat senada dengan tombol */
+            margin-top: 10px;
             letter-spacing: 0.3px;
+            text-align: center;
 }
         .container {
             
@@ -190,8 +192,6 @@
 <body>
 
     <div class="container">
-
-
         <!-- TAMPILAN 1: HALAMAN UTAMA -->
         <div id="view-home">
             <h1>Personel Ability List TCR</h1>
@@ -207,9 +207,6 @@
                 <p>* <strong>Tanpa Akun:</strong> Untuk akses terbatas.</p>
             </div>
             
-            <!-- Tempat Tanggal Otomatis -->
-            <div id="current-date" class="date-display">
-            </div>
         </div>
 
         <!-- TAMPILAN 2: FORM LOGIN -->
@@ -240,17 +237,15 @@
                 <div class="btn-group">
                     <button type="submit" class="btn btn-primary">Login</button>
                 </div>
-
-             <!-- Tempat Tanggal Otomatis -->
-                <div id="current-date" class="date-display">
-                </div>
             </form>
 
             <button class="btn-back" onclick="bukaHalamanUtama()">← Kembali ke Halaman Utama</button>
         </div>
 
     </div>
-
+    <!-- Letakkan di sini (di luar container) -->
+    <div id="current-date" class="date-display"></div>
+    
     <script>
         function bukaHalamanLogin() {
             document.getElementById('view-home').classList.add('hidden');
