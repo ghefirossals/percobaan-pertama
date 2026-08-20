@@ -2,47 +2,122 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Website Pertamaku</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personel Ability List TCR</title>
     
-    <!-- CSS: Untuk mengatur tampilan visual -->
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f7f6;
+            background-color: #f4f6f9;
             color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             text-align: center;
-            padding-top: 80px;
+            max-width: 480px;
+            width: 90%;
         }
+
         h1 {
-            color: #0070f3;
+            color: #1a202c;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 8px;
         }
-        button {
-            background-color: #0070f3;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            font-size: 16px;
+
+        .subtitle {
+            color: #718096;
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 32px;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            font-size: 15px;
+            font-weight: 600;
             border-radius: 8px;
+            border: none;
             cursor: pointer;
-            transition: 0.3s;
+            transition: all 0.2s ease;
+            text-decoration: none;
         }
-        button:hover {
+
+        .btn-primary {
+            background-color: #0070f3;
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
             background-color: #0051a2;
+        }
+
+        .btn-secondary {
+            background-color: #e2e8f0;
+            color: #2d3748;
+        }
+
+        .btn-secondary:hover {
+            background-color: #cbd5e0;
+        }
+
+        .info-box {
+            margin-top: 24px;
+            font-size: 12px;
+            color: #a0aec0;
+            line-height: 1.5;
         }
     </style>
 </head>
 <body>
 
-    <h1>Personel Ability List TCR </h1>
-    <p>Ini website pertamaku yang sudah punya struktur, desain, dan fungsi.</p>
-    
-    <!-- Tombol yang memicu JavaScript -->
-    <button onclick="tampilkanPesan()">Klik Saya!</button>
+    <div class="container">
+        <!-- Judul & Subjudul -->
+        <h1>Personel Ability List TCR</h1>
+        <p class="subtitle">Dashboard PAL TCR</p>
 
-    <!-- JAVASCRIPT: Untuk menambahkan fungsi/interaksi -->
+        <!-- Tombol Aksi -->
+        <div class="btn-group">
+            <button class="btn btn-primary" onclick="aksesLogin()">Login</button>
+            <button class="btn btn-secondary" onclick="aksesTamu()">Masuk Tanpa Akun</button>
+        </div>
+
+        <!-- Catatan Hak Akses -->
+        <div class="info-box">
+            <p>* <strong>Login:</strong> Akses penuh untuk melihat, menambah, dan mengubah data.</p>
+            <p>* <strong>Tanpa Akun:</strong> Akses terbatas untuk melihat dan mengunduh dokumen.</p>
+        </div>
+    </div>
+
     <script>
-        function tampilkanPesan() {
-            alert("Selamat! Fitur JavaScript kamu berhasil berjalan 🎉");
+        function aksesLogin() {
+            alert("Sistem Login akan kita hubungkan setelah tampilan disetujui!");
+        }
+
+        function aksesTamu() {
+            alert("Masuk sebagai Tamu (Mode Hanya Lihat & Unduh Dokumen)");
         }
     </script>
 
