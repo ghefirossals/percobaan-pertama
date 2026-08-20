@@ -22,6 +22,13 @@
             min-height: 100vh;
         }
 
+        .date-display {
+            font-size: 13px;
+            font-weight: 600;
+            color: #115c44; /* Warna hijau pekat senada dengan tombol */
+            margin-bottom: 10px;
+            letter-spacing: 0.3px;
+}
         .container {
             
             position: relative;
@@ -183,7 +190,9 @@
 <body>
 
     <div class="container">
-        
+
+        <!-- Tempat Tanggal Otomatis -->
+        <div id="current-date" class="date-display"></div>
         <!-- TAMPILAN 1: HALAMAN UTAMA -->
         <div id="view-home">
             <h1>Personel Ability List TCR</h1>
@@ -201,6 +210,8 @@
         </div>
 
         <!-- TAMPILAN 2: FORM LOGIN -->
+        <!-- Tempat Tanggal Otomatis -->
+        <div id="current-date" class="date-display"></div>
         <div id="view-login" class="hidden">
             <h1>Personel Ability List TCR</h1>
             <p class="subtitle">Please enter your name and password to log in.</p>
