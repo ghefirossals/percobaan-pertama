@@ -36,21 +36,51 @@
             color: #1a202c;
             font-size: 26px;
             font-weight: 700;
-            margin-bottom: 2px;
+            margin-bottom: 2px; /* Dibuat rapat dengan subtitle */
         }
 
         .subtitle {
             color: #718096;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 500;
             margin-top: 0;
-            margin-bottom: 32px;
+            margin-bottom: 28px;
         }
 
+        /* Desain Kolom Input (Form) */
+        .form-group {
+            text-align: left;
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #4a5568;
+            margin-bottom: 6px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            font-size: 14px;
+            border: 1px solid #cbd5e0;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus {
+            border-color: #0070f3;
+        }
+
+        /* Desain Tombol */
         .btn-group {
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 12px;
+            margin-top: 20px;
         }
 
         .btn {
@@ -63,12 +93,11 @@
             border: none;
             cursor: pointer;
             transition: all 0.2s ease;
-            text-decoration: none;
         }
 
         .btn-primary {
-            background-color: #105666;
-            color: #f7f4d5;
+            background-color: #0070f3;
+            color: #ffffff;
         }
 
         .btn-primary:hover {
@@ -77,11 +106,24 @@
 
         .btn-secondary {
             background-color: #e2e8f0;
-            color: #105666;
+            color: #2d3748;
         }
 
         .btn-secondary:hover {
             background-color: #cbd5e0;
+        }
+
+        .btn-back {
+            background: none;
+            color: #718096;
+            font-size: 13px;
+            cursor: pointer;
+            border: none;
+            margin-top: 10px;
+        }
+
+        .btn-back:hover {
+            color: #1a202c;
         }
 
         .info-box {
@@ -90,35 +132,78 @@
             color: #a0aec0;
             line-height: 1.5;
         }
+
+        /* Class untuk menyembunyikan tampilan */
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- Judul & Subjudul -->
-        <h1>Personel Ability List TCR</h1>
-        <p class="subtitle">CI 584461</p>
+        
+        <!-- TAMPILAN 1: HALAMAN UTAMA -->
+        <div id="view-home">
+            <h1>Personel Ability List TCR</h1>
+            <p class="subtitle">Dashboard PAL TCR</p>
 
-        <!-- Tombol Aksi -->
-        <div class="btn-group">
-            <button class="btn btn-primary" onclick="aksesLogin()">Login</button>
-            <button class="btn btn-secondary" onclick="aksesTamu()">Masuk Tanpa Akun</button>
+            <div class="btn-group">
+                <button class="btn btn-primary" onclick="bukaHalamanLogin()">Login</button>
+                <button class="btn btn-secondary" onclick="aksesTamu()">Masuk Tanpa Akun</button>
+            </div>
+
+            <div class="info-box">
+                <p>* <strong>Login:</strong> Akses penuh untuk melihat, menambah, dan mengubah data.</p>
+                <p>* <strong>Tanpa Akun:</strong> Akses terbatas untuk melihat dan mengunduh dokumen.</p>
+            </div>
         </div>
 
-        <!-- Catatan Hak Akses -->
-        <div class="info-box">
-            <p>* <strong>Login:</strong> Akses penuh.</p>
-            <p>* <strong>Tanpa Akun:</strong> Akses terbatas.</p>
+        <!-- TAMPILAN 2: FORM LOGIN -->
+        <div id="view-login" class="hidden">
+            <h1>Personel Ability List TCR</h1>
+            <p class="subtitle">Please enter your name and password to log in.</p>
+
+            <form onsubmit="prosesLogin(event)">
+                <div class="form-group">
+                    <label for="userId">ID / Nama User</label>
+                    <input type="text" id="userId" placeholder="Masukkan ID Anda" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="userPassword">Password</label>
+                    <input type="password" id="userPassword" placeholder="Masukkan Password" required>
+                </div>
+
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+            </form>
+
+            <button class="btn-back" onclick="bukaHalamanUtama()">← Kembali ke Halaman Utama</button>
         </div>
+
     </div>
 
     <script>
-        function aksesLogin() {
-            alert("Sistem Login akan kita hubungkan setelah tampilan disetujui!");
+        function bukaHalamanLogin() {
+            document.getElementById('view-home').classList.add('hidden');
+            document.getElementById('view-login').classList.remove('hidden');
+        }
+
+        function bukaHalamanUtama() {
+            document.getElementById('view-login').classList.add('hidden');
+            document.getElementById('view-home').classList.remove('hidden');
         }
 
         function aksesTamu() {
             alert("Masuk sebagai Tamu (Mode Hanya Lihat & Unduh Dokumen)");
+        }
+
+        function prosesLogin(event) {
+            event.preventDefault();
+            const id = document.getElementById('userId').value;
+            alert("Login berhasil untuk ID: " + id);
         }
     </script>
 
