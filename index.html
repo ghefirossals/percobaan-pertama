@@ -237,68 +237,88 @@
         /* Container Grid untuk 5 Kotak */
         .cards-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(3, 1fr); /* Tetap 3 kolom menyamping */
+            gap: 28px;
             padding: 40px 24px;
-            max-width: 1200px;
-            margin: 60px auto 0 auto; /* Menjaga jarak dari Top Bar */
+            max-width: 1100px;
+            margin: 80px auto 40px auto; /* Memberi ruang scroll di bawah */
         }
+        /* Penyesuaian Responsif Layar Kecil/HP (Menjadi 1 atau 2 kolom) */
+        @media (max-width: 900px) {
+        .cards-container {
+            grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 600px) {
+        .cards-container {
+            grid-template-columns: 1fr;
+            }
+    }
+        
 
         /* Desain Kotak (Card) */
         .tcr-card {
             background-color: #ffffff;
-            border-radius: 12px;
-            padding: 24px 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 14px;
+            padding: 32px 24px; /* Padding ditingkatkan agar kartu lebih luas */
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
             border: 1px solid #e2e8f0;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
         }
 
         /* Animasi Pop-Up / Hover Lift saat Kursor Tergerak ke Kotak */
         .tcr-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+            transform: translateY(-10px);
+            box-shadow: 0 16px 30px rgba(0, 0, 0, 0.12);
         }
 
         .tcr-title {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 700;
             color: #004b73;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .tcr-subtitle {
-            font-size: 11px;
+            font-size: 13px;
             font-weight: 600;
             color: #718096;
             letter-spacing: 0.5px;
-            line-height: 1.4;
-            margin-bottom: 20px;
-            min-height: 32px; /* Menjaga tinggi area subtitle tetap sama */
+            line-height: 1.5;
+            margin-bottom: 28px;
+            min-height: 40px; /* Menjaga tinggi area subtitle tetap sama */
         }
 
-        /* Tombol Gradasi Kecil di Bawah Kotak */
+        /* Tombol Gradasi dengan Efek Hover & Klik Seperti Tombol Login */
         .btn-card-action {
             background: linear-gradient(90deg, #004b73 0%, #115c44 100%);
             color: #ffffff;
             border: none;
-            padding: 8px 16px;
-            font-size: 12px;
+            padding: 12px 20px;
+            font-size: 13px;
             font-weight: 600;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: opacity 0.2s;
-            align-self: center;
             width: 100%;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
 
+        /* Animasi Tombol saat Kursor Disentuhkan (Hover) & Diklik (Active) */
         .btn-card-action:hover {
-            opacity: 0.9;
+            opacity: 0.92;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
+
+.btn-card-action:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
         
     </style>
 </head>
