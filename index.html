@@ -187,7 +187,45 @@
         .hidden {
             display: none;
         }
-        
+
+        .navbar-top {
+            width: 100%;
+            background: linear-gradient(90deg, #004b73 0%, #115c44 100%);
+            color: #ffffff;
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            gap: 15px;
+        }
+
+        .nav-left { display: flex; flex-direction: column; }
+        .nav-title { font-size: 18px; font-weight: 700; }
+        .nav-subtitle { font-size: 12px; opacity: 0.85; margin-top: 2px; }
+
+        .nav-center { flex: 1; max-width: 380px; }
+        .nav-search {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 6px 12px;
+            gap: 8px;
+        }
+        .nav-search svg { color: #ffffff; opacity: 0.8; }
+        .nav-search input {
+            border: none; background: transparent; outline: none;
+            width: 100%; font-size: 13px; color: #ffffff;
+        }
+        .nav-search input::placeholder { color: rgba(255, 255, 255, 0.7); }
+
+        .btn-logout-nav {
+            background-color: #ffffff; color: #004b73; border: none;
+            padding: 8px 16px; border-radius: 6px; font-size: 12px;
+            font-weight: 600; cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -246,7 +284,32 @@
     
     <!-- Letakkan di sini (di luar container) -->
     <div id="current-date" class="date-display"></div>
-    
+
+    <!-- TAMPILAN DASHBOARD MODE TAMU -->
+    <div id="view-dashboard" class="hidden">
+        <header class="navbar-top">
+            <div class="nav-left">
+                <span class="nav-title">Personel Ability List TCR</span>
+                <span class="nav-subtitle">
+                <span id="nav-date"></span> | Last updated: <strong style="color: #6ee7b7;">Hari ini</strong>
+                </span>
+            </div>
+
+        <div class="nav-center">
+            <div class="nav-search">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" placeholder="Cari data atau dokumen...">
+            </div>
+        </div>
+
+        <div class="nav-right">
+            <button class="btn-logout-nav" onclick="bukaHalamanUtama()">Keluar</button>
+        </div>
+    </header>
+</div>
     
     <script>
         function bukaHalamanLogin() {
@@ -279,6 +342,19 @@
                 // Kembalikan ke ikon mata biasa
                 eyeIcon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>';
             }
+        }
+        function aksesTamu() {
+            document.querySelector('.container').classList.add('hidden');
+            document.getElementById('current-date').classList.add('hidden');
+            document.getElementById('view-dashboard').classList.remove('hidden');
+        }
+
+        function bukaHalamanUtama() {
+            document.getElementById('view-login').classList.add('hidden');
+            document.getElementById('view-dashboard').classList.add('hidden');
+            document.querySelector('.container').classList.remove('hidden');
+            document.getElementById('view-home').classList.remove('hidden');
+            document.getElementById('current-date').classList.remove('hidden');
         }
        function updateTanggal() {
     const opsi = { 
