@@ -22,7 +22,6 @@
             overflow-y: auto;
         }
 
-        /* LEVEL 1: LOGIN / HOME STYLING */
         .auth-wrapper {
             display: flex;
             flex-direction: column;
@@ -73,9 +72,12 @@
         .btn-secondary { background-color: #ebf3fe; color: #004b73; }
         .btn-back { background: none; color: #718096; font-size: 13px; cursor: pointer; border: none; margin-top: 10px; }
         .info-box { margin-top: 24px; font-size: 12px; color: #a0aec0; line-height: 1.5; }
-        .hidden { display: none !important; }
         
-        /* NAVBAR & DASHBOARD GENERAL */
+        /* PENTING: Class hidden dengan z-index & display none */
+        .hidden { 
+            display: none !important; 
+        }
+        
         #view-dashboard, #view-personnel-list { width: 100%; }
         .navbar-top {
             position: sticky; top: 0; z-index: 1000; width: 100%;
@@ -89,7 +91,6 @@
             font-weight: 600; cursor: pointer;
         }
 
-        /* LEVEL 2: MENU DASHBOARD TCR 1-5 */
         .cards-container {
             display: grid; grid-template-columns: repeat(3, 1fr);
             gap: 28px; padding: 40px 24px; max-width: 1100px; margin: 20px auto 40px auto;
@@ -99,7 +100,6 @@
         .tcr-subtitle { font-size: 13px; font-weight: 600; color: #718096; margin-bottom: 28px; }
         .btn-card-action { background: linear-gradient(90deg, #004b73 0%, #115c44 100%); color: #ffffff; border: none; padding: 12px 20px; font-size: 13px; font-weight: 600; border-radius: 8px; cursor: pointer; width: 100%; }
 
-        /* LEVEL 3: GRID CARD PERSONIL DARI SPREADSHEET */
         .personnel-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -135,45 +135,25 @@
             background-color: #e2e8f0;
         }
 
-        .person-name {
-            font-size: 15px;
-            font-weight: 700;
-            color: #1a202c;
-            margin-bottom: 4px;
-        }
+        .person-name { font-size: 15px; font-weight: 700; color: #1a202c; margin-bottom: 4px; }
+        .person-id { font-size: 12px; font-weight: 600; color: #004b73; background-color: #ebf3fe; display: inline-block; padding: 2px 8px; border-radius: 4px; margin-bottom: 8px; }
+        .person-role { font-size: 12px; color: #718096; }
 
-        .person-id {
-            font-size: 12px;
-            font-weight: 600;
-            color: #004b73;
-            background-color: #ebf3fe;
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 4px;
-            margin-bottom: 8px;
-        }
-
-        .person-role {
-            font-size: 12px;
-            color: #718096;
-        }
-
-        /* RESPONSIVE LAYOUT */
         @media (max-width: 900px) { .cards-container { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 600px) { .cards-container { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
-    <!-- LEVEL 1: HALAMAN AWAL & LOGIN -->
+    <!-- HALAMAN AWAL / LOGIN -->
     <div id="auth-section" class="auth-wrapper">
         <div class="container">
             <div id="view-home">
                 <h1>Personel Ability List TCR</h1>
                 <p class="subtitle">CI 584461</p>
                 <div class="btn-group">
-                    <button class="btn btn-primary" onclick="bukaHalamanLogin()">Login</button>
-                    <button class="btn btn-secondary" onclick="aksesTamu()">Masuk Tanpa Akun</button>
+                    <button type="button" class="btn btn-primary" onclick="bukaHalamanLogin()">Login</button>
+                    <button type="button" class="btn btn-secondary" onclick="aksesTamu()">Masuk Tanpa Akun</button>
                 </div>
                 <div class="info-box">
                     <p>* <strong>Login:</strong> Untuk akses penuh.</p>
@@ -194,7 +174,7 @@
                         <div class="password-wrapper">
                             <input type="password" id="userPassword" placeholder="Masukkan Password" required>
                             <button type="button" class="toggle-password" onclick="togglePasswordVisibility()">
-                                <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
                             </button>
                         </div>
                     </div>
@@ -202,70 +182,91 @@
                         <button type="submit" class="btn btn-primary">Login</button>
                     </div>
                 </form>
-                <button class="btn-back" onclick="bukaHalamanUtama()">← Kembali ke Halaman Utama</button>
+                <button type="button" class="btn-back" onclick="bukaHalamanUtama()">← Kembali ke Halaman Utama</button>
             </div>
         </div>
         <div id="current-date" class="date-display"></div>
     </div>
 
-    <!-- LEVEL 2: DASHBOARD UTAMA (PILIH TCR 1 - TCR 5) -->
+    <!-- DASHBOARD UTAMA -->
     <div id="view-dashboard" class="hidden">
         <header class="navbar-top">
             <div><span style="font-weight: bold; font-size: 18px;">Personel Ability List TCR</span></div>
-            <div><button class="btn-logout-nav" onclick="bukaHalamanUtama()">Keluar</button></div>
+            <div><button type="button" class="btn-logout-nav" onclick="bukaHalamanUtama()">Keluar</button></div>
         </header>
         
         <div class="cards-container">
             <div class="tcr-card">
                 <div class="tcr-title">TCR 1</div>
                 <div class="tcr-subtitle">SHEETMETAL, ULD & MEAL TROLLEY</div>
-                <button class="btn-card-action" onclick="bukaTCR(1)">Buka Halaman</button>
+                <button type="button" class="btn-card-action" onclick="bukaTCR(1)">Buka Halaman</button>
             </div>
             <div class="tcr-card">
                 <div class="tcr-title">TCR 2</div>
                 <div class="tcr-subtitle">COMPOSITE</div>
-                <button class="btn-card-action" onclick="bukaTCR(2)">Buka Halaman</button>
+                <button type="button" class="btn-card-action" onclick="bukaTCR(2)">Buka Halaman</button>
             </div>
             <div class="tcr-card">
                 <div class="tcr-title">TCR 3</div>
                 <div class="tcr-subtitle">CABIN SEAT</div>
-                <button class="btn-card-action" onclick="bukaTCR(3)">Buka Halaman</button>
+                <button type="button" class="btn-card-action" onclick="bukaTCR(3)">Buka Halaman</button>
             </div>
             <div class="tcr-card">
                 <div class="tcr-title">TCR 4</div>
                 <div class="tcr-subtitle">CABIN MONUMENT</div>
-                <button class="btn-card-action" onclick="bukaTCR(4)">Buka Halaman</button>
+                <button type="button" class="btn-card-action" onclick="bukaTCR(4)">Buka Halaman</button>
             </div>
             <div class="tcr-card">
                 <div class="tcr-title">TCR 5</div>
                 <div class="tcr-subtitle">MACHINING</div>
-                <button class="btn-card-action" onclick="bukaTCR(5)">Buka Halaman</button>
+                <button type="button" class="btn-card-action" onclick="bukaTCR(5)">Buka Halaman</button>
             </div>
         </div>
     </div>
 
-    <!-- LEVEL 3: LIST PERSONIL HASIL FETCH DARI SPREADSHEET -->
+    <!-- LIST PERSONIL -->
     <div id="view-personnel-list" class="hidden">
         <header class="navbar-top">
             <div>
-                <button class="btn-back-nav" onclick="kembaliKeDashboard()">← Kembali ke Dashboard</button>
+                <button type="button" class="btn-back-nav" onclick="kembaliKeDashboard()">← Kembali ke Dashboard</button>
                 <span id="tcr-page-title" style="font-weight: bold; font-size: 18px; margin-left: 15px;">Daftar Personil</span>
             </div>
         </header>
 
-        <div id="personnel-container" class="personnel-grid">
-            <!-- Data personil dari Spreadsheet akan otomatis dimuat di sini -->
-        </div>
+        <div id="personnel-container" class="personnel-grid"></div>
     </div>
 
     <script>
-        // PASANG URL WEB APP GOOGLE APPS SCRIPT MILIKMU DI BAWAH INI:
-        const SCRIPT_URL = https://script.google.com/macros/s/AKfycbyggMH6lNMKlDnxgPmr-CTS-OGkziPEonAtgteQoKuOzMF2bRSBghLUWmJXmqGA22QP/exec;
+        const SCRIPT_URL = "PASANG_URL_WEB_APP_GOOGLE_SCRIPT_KAMU_DI_SINI";
 
-        // MENGAMBIL DATA PERSONIL DARI SPREADSHEET SECARA LIVE
+        function aksesTamu() {
+            document.getElementById('auth-section').classList.add('hidden');
+            document.getElementById('view-dashboard').classList.remove('hidden');
+            document.getElementById('view-personnel-list').classList.add('hidden');
+        }
+
+        function bukaHalamanUtama() {
+            document.getElementById('auth-section').classList.remove('hidden');
+            document.getElementById('view-home').classList.remove('hidden');
+            document.getElementById('view-login').classList.add('hidden');
+            document.getElementById('view-dashboard').classList.add('hidden');
+            document.getElementById('view-personnel-list').classList.add('hidden');
+        }
+
+        function bukaHalamanLogin() {
+            document.getElementById('view-home').classList.add('hidden');
+            document.getElementById('view-login').classList.remove('hidden');
+        }
+
+        function kembaliKeDashboard() {
+            document.getElementById('view-personnel-list').classList.add('hidden');
+            document.getElementById('view-dashboard').classList.remove('hidden');
+        }
+
         function bukaTCR(nomorTCR) {
             const sheetName = "TCR" + nomorTCR; 
             
+            document.getElementById('auth-section').classList.add('hidden');
             document.getElementById('view-dashboard').classList.add('hidden');
             document.getElementById('view-personnel-list').classList.remove('hidden');
             document.getElementById('tcr-page-title').innerText = "Daftar Personil TCR " + nomorTCR;
@@ -273,17 +274,20 @@
             const container = document.getElementById('personnel-container');
             container.innerHTML = '<p style="text-align:center; grid-column: 1/-1; padding: 40px; color: #718096;">Memuat data dari Google Sheets...</p>';
 
+            if (!SCRIPT_URL || SCRIPT_URL.includes("PASANG_URL_WEB_APP")) {
+                container.innerHTML = '<p style="text-align:center; color:#e53e3e; grid-column: 1/-1; padding: 40px;">URL Google Apps Script belum dipasang di JavaScript.</p>';
+                return;
+            }
+
             fetch(`${SCRIPT_URL}?sheet=${sheetName}`)
                 .then(response => response.json())
                 .then(data => {
                     container.innerHTML = ''; 
-
                     if (!data || data.length === 0 || data.error) {
-                        container.innerHTML = '<p style="text-align:center; grid-column: 1/-1; padding: 40px; color: #e53e3e;">Data tidak ditemukan atau sheet kosong.</p>';
+                        container.innerHTML = '<p style="text-align:center; grid-column: 1/-1; padding: 40px; color: #e53e3e;">Data tidak ditemukan pada Sheet.</p>';
                         return;
                     }
 
-                    // Render setiap card personil secara dinamis berdasarkan data spreadsheet
                     data.forEach(person => {
                         const nama = person.nama || "Tanpa Nama";
                         const id = person.id || "-";
@@ -302,31 +306,13 @@
                     });
                 })
                 .catch(error => {
-                    console.error("Error fetching data:", error);
-                    container.innerHTML = '<p style="text-align:center; color:#e53e3e; grid-column: 1/-1; padding: 40px;">Gagal mengambil data dari Spreadsheet. Periksa koneksi atau URL Script.</p>';
+                    console.error("Error:", error);
+                    container.innerHTML = '<p style="text-align:center; color:#e53e3e; grid-column: 1/-1; padding: 40px;">Gagal mengambil data dari Spreadsheet.</p>';
                 });
         }
 
-        function kembaliKeDashboard() {
-            document.getElementById('view-personnel-list').classList.add('hidden');
-            document.getElementById('view-dashboard').classList.remove('hidden');
-        }
-
         function bukaDetailPersonil(id) {
-            alert("Membuka Ability List untuk Personil ID: " + id + "\n\n(Halaman detail profile & ability list akan kita buat setelah ini!)");
-        }
-
-        function bukaHalamanLogin() {
-            document.getElementById('view-home').classList.add('hidden');
-            document.getElementById('view-login').classList.remove('hidden');
-        }
-
-        function bukaHalamanUtama() {
-            document.getElementById('view-login').classList.add('hidden');
-            document.getElementById('view-dashboard').classList.add('hidden');
-            document.getElementById('view-personnel-list').classList.add('hidden');
-            document.getElementById('auth-section').classList.remove('hidden');
-            document.getElementById('view-home').classList.remove('hidden');
+            alert("Membuka Detail Personil ID: " + id);
         }
 
         function prosesLogin(event) {
@@ -338,11 +324,6 @@
         function togglePasswordVisibility() {
             const passwordInput = document.getElementById('userPassword');
             passwordInput.type = (passwordInput.type === 'password') ? 'text' : 'password';
-        }
-
-        function aksesTamu() {
-            document.getElementById('auth-section').classList.add('hidden');
-            document.getElementById('view-dashboard').classList.remove('hidden');
         }
 
         function updateTanggal() {
