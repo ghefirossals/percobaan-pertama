@@ -22,7 +22,6 @@
             overflow-y: auto;
         }
 
-        /* PEMBUNGKUS UTAMA: Memaksa elemen di dalamnya (container) tepat di tengah layar */
         .auth-wrapper {
             display: flex;
             flex-direction: column;
@@ -43,7 +42,7 @@
             text-align: center;
             max-width: 400px;
             width: 100%;
-            margin: 0 auto; /* Memastikan posisi horizontal selalu di tengah */
+            margin: 0 auto;
         }
         
         .container::before {
@@ -56,236 +55,138 @@
             background: linear-gradient(90deg, #004b73 0%, #115c44 100%); 
         }
         
-        h1 {
-            color: #1a202c;
-            font-size: 26px;
-            font-weight: 700;
-            margin-bottom: 2px;
-        }
+        h1 { color: #1a202c; font-size: 26px; font-weight: 700; margin-bottom: 2px; }
+        .subtitle { color: #718096; font-size: 14px; font-weight: 500; margin-bottom: 28px; }
+        .date-display { font-size: 13px; font-weight: 500; color: #718096; margin-top: 14px; text-align: center; }
 
-        .subtitle {
-            color: #718096;
-            font-size: 14px;
-            font-weight: 500;
-            margin-top: 0;
-            margin-bottom: 28px;
-        }
+        .form-group { text-align: left; margin-bottom: 16px; }
+        .form-group label { display: block; font-size: 13px; font-weight: 600; color: #4a5568; margin-bottom: 6px; }
+        .form-group input { width: 100%; padding: 12px; font-size: 14px; background-color: #ebf3fe; border: 1px solid #d3e3f8; border-radius: 8px; outline: none; }
+        .password-wrapper { position: relative; display: flex; align-items: center; }
+        .password-wrapper input { padding-right: 42px; }
+        .toggle-password { position: absolute; right: 12px; background: none; border: none; cursor: pointer; color: #718096; }
 
-        .date-display {
-            font-size: 13px;
-            font-weight: 500;
-            color: #718096;
-            margin-top: 14px;
-            letter-spacing: 0.3px;
-            text-align: center;
-        }
-
-        /* Form & Input */
-        .form-group {
-            text-align: left;
-            margin-bottom: 16px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 13px;
-            font-weight: 600;
-            color: #4a5568;
-            margin-bottom: 6px;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 12px;
-            font-size: 14px;
-            background-color: #ebf3fe;
-            border: 1px solid #d3e3f8;
-            border-radius: 8px;
-            outline: none;
-        }
-
-        .password-wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .password-wrapper input {
-            padding-right: 42px;
-        }
-
-        .toggle-password {
-            position: absolute;
-            right: 12px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: #718096;
-        }
-
-        /* Tombol Utama */
-        .btn-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 20px;
-        }
-
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 14px;
-            font-size: 15px;
-            font-weight: 600;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: linear-gradient(90deg, #004b73 0%, #115c44 100%); 
-            color: #ffffff;
-        }
-
-        .btn-secondary {
-            background-color: #ebf3fe;
-            color: #004b73;
-        }
-
-        .btn-back {
-            background: none;
-            color: #718096;
-            font-size: 13px;
-            cursor: pointer;
-            border: none;
-            margin-top: 10px;
-        }
-
-        .info-box {
-            margin-top: 24px;
-            font-size: 12px;
-            color: #a0aec0;
-            line-height: 1.5;
-        }
-
-        .hidden {
-            display: none !important;
-        }
+        .btn-group { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+        .btn { display: block; width: 100%; padding: 14px; font-size: 15px; font-weight: 600; border-radius: 8px; border: none; cursor: pointer; }
+        .btn-primary { background: linear-gradient(90deg, #004b73 0%, #115c44 100%); color: #ffffff; }
+        .btn-secondary { background-color: #ebf3fe; color: #004b73; }
+        .btn-back { background: none; color: #718096; font-size: 13px; cursor: pointer; border: none; margin-top: 10px; }
+        .info-box { margin-top: 24px; font-size: 12px; color: #a0aec0; line-height: 1.5; }
+        .hidden { display: none !important; }
         
-        /* Dashboard Styling */
-        #view-dashboard {
-            width: 100%;
-        }
-        
+        /* Dashboard & Layout Umum */
+        #view-dashboard, #view-personnel-list { width: 100%; }
         .navbar-top {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            width: 100%;
+            position: sticky; top: 0; z-index: 1000; width: 100%;
             background: linear-gradient(90deg, #004b73 0%, #115c44 100%);
-            color: #ffffff;
-            padding: 14px 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            color: #ffffff; padding: 14px 24px; display: flex;
+            align-items: center; justify-content: space-between;
         }
-
-        .btn-logout-nav {
-            background-color: #ffffff; 
-            color: #004b73; 
-            border: none;
-            padding: 8px 16px; 
-            border-radius: 6px; 
-            font-size: 12px;
-            font-weight: 600; 
-            cursor: pointer;
+        .btn-logout-nav, .btn-back-nav {
+            background-color: #ffffff; color: #004b73; border: none;
+            padding: 8px 16px; border-radius: 6px; font-size: 12px;
+            font-weight: 600; cursor: pointer;
         }
 
         .cards-container {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 28px; padding: 40px 24px; max-width: 1100px; margin: 20px auto 40px auto;
+        }
+
+        /* GRID PERSONIL (RESPONSIF) */
+        .personnel-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 28px;
-            padding: 40px 24px;
-            max-width: 1100px;
-            margin: 20px auto 40px auto;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+            padding: 30px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        @media (max-width: 900px) {
-            .cards-container { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 600px) {
-            .cards-container { grid-template-columns: 1fr; }
-        }
-
-        .tcr-card {
+        /* DESAIN CARD PERSONIL */
+        .person-card {
             background-color: #ffffff;
-            border-radius: 14px;
-            padding: 32px 24px;
-            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             border: 1px solid #e2e8f0;
             text-align: center;
-        }
-
-        .tcr-title {
-            font-size: 22px;
-            font-weight: 700;
-            color: #004b73;
-            margin-bottom: 10px;
-        }
-
-        .tcr-subtitle {
-            font-size: 13px;
-            font-weight: 600;
-            color: #718096;
-            margin-bottom: 28px;
-        }
-
-        .btn-card-action {
-            background: linear-gradient(90deg, #004b73 0%, #115c44 100%);
-            color: #ffffff;
-            border: none;
-            padding: 12px 20px;
-            font-size: 13px;
-            font-weight: 600;
-            border-radius: 8px;
             cursor: pointer;
-            width: 100%;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
+
+        .person-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 12px auto;
+            border: 3px solid #ebf3fe;
+        }
+
+        .person-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 4px;
+        }
+
+        .person-id {
+            font-size: 12px;
+            font-weight: 600;
+            color: #004b73;
+            background-color: #ebf3fe;
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+
+        .person-role {
+            font-size: 12px;
+            color: #718096;
+        }
+
+        .tcr-card { background-color: #ffffff; border-radius: 14px; padding: 32px 24px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); border: 1px solid #e2e8f0; text-align: center; }
+        .tcr-title { font-size: 22px; font-weight: 700; color: #004b73; margin-bottom: 10px; }
+        .tcr-subtitle { font-size: 13px; font-weight: 600; color: #718096; margin-bottom: 28px; }
+        .btn-card-action { background: linear-gradient(90deg, #004b73 0%, #115c44 100%); color: #ffffff; border: none; padding: 12px 20px; font-size: 13px; font-weight: 600; border-radius: 8px; cursor: pointer; width: 100%; }
+
+        @media (max-width: 900px) { .cards-container { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .cards-container { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
-    <!-- HALAMAN AWAL / LOGIN -->
+    <!-- LEVEL 1: LOGIN / HOME -->
     <div id="auth-section" class="auth-wrapper">
         <div class="container">
-            
-            <!-- TAMPILAN 1: HOME -->
             <div id="view-home">
                 <h1>Personel Ability List TCR</h1>
                 <p class="subtitle">CI 584461</p>
-
                 <div class="btn-group">
                     <button class="btn btn-primary" onclick="bukaHalamanLogin()">Login</button>
                     <button class="btn btn-secondary" onclick="aksesTamu()">Masuk Tanpa Akun</button>
                 </div>
-
                 <div class="info-box">
                     <p>* <strong>Login:</strong> Untuk akses penuh.</p>
                     <p>* <strong>Tanpa Akun:</strong> Untuk akses terbatas.</p>
                 </div>
             </div>
 
-            <!-- TAMPILAN 2: LOGIN -->
             <div id="view-login" class="hidden">
                 <h1>Personel Ability List TCR</h1>
                 <p class="subtitle">Please enter your name and password to log in.</p>
-
                 <form onsubmit="prosesLogin(event)">
                     <div class="form-group">
                         <label for="userId">ID / Nama User</label>
                         <input type="text" id="userId" placeholder="Masukkan ID Anda" required>
                     </div>
-
                     <div class="form-group">
                         <label for="userPassword">Password</label>
                         <div class="password-wrapper">
@@ -295,30 +196,21 @@
                             </button>
                         </div>
                     </div>
-
                     <div class="btn-group">
                         <button type="submit" class="btn btn-primary">Login</button>
                     </div>
                 </form>
-
                 <button class="btn-back" onclick="bukaHalamanUtama()">← Kembali ke Halaman Utama</button>
             </div>
-
         </div>
-        
-        <!-- Tanggal ditarik masuk ke dalam wrapper agar ikut ke tengah -->
         <div id="current-date" class="date-display"></div>
     </div>
 
-    <!-- HALAMAN DASHBOARD TAMU -->
+    <!-- LEVEL 2: DASHBOARD UTAMA -->
     <div id="view-dashboard" class="hidden">
         <header class="navbar-top">
-            <div>
-                <span style="font-weight: bold; font-size: 18px;">Personel Ability List TCR</span>
-            </div>
-            <div>
-                <button class="btn-logout-nav" onclick="bukaHalamanUtama()">Keluar</button>
-            </div>
+            <div><span style="font-weight: bold; font-size: 18px;">Personel Ability List TCR</span></div>
+            <div><button class="btn-logout-nav" onclick="bukaHalamanUtama()">Keluar</button></div>
         </header>
         
         <div class="cards-container">
@@ -350,7 +242,74 @@
         </div>
     </div>
 
+    <!-- LEVEL 3: LIST 13 PERSONIL TCR 1 -->
+    <div id="view-personnel-list" class="hidden">
+        <header class="navbar-top">
+            <div>
+                <button class="btn-back-nav" onclick="kembaliKeDashboard()">← Kembali ke Dashboard</button>
+                <span id="tcr-page-title" style="font-weight: bold; font-size: 18px; margin-left: 15px;">Daftar Personil TCR 1</span>
+            </div>
+        </header>
+
+        <div id="personnel-container" class="personnel-grid">
+            <!-- 13 Card Personil akan di-generate otomatis oleh JavaScript di bawah -->
+        </div>
+    </div>
+
     <script>
+        // Data Dummy 13 Personil TCR 1
+        const dataPersonilTCR1 = [
+            { id: "584401", nama: "Ahmad Subagja", jabatan: "Senior Technician", foto: "https://via.placeholder.com/80" },
+            { id: "584402", nama: "Budi Santoso", jabatan: "Technician", foto: "https://via.placeholder.com/80" },
+            { id: "584403", nama: "Candra Wijaya", jabatan: "Junior Technician", foto: "https://via.placeholder.com/80" },
+            { id: "584404", nama: "Deni Pratama", jabatan: "Technician", foto: "https://via.placeholder.com/80" },
+            { id: "584405", nama: "Eko Setiawan", jabatan: "Senior Technician", foto: "https://via.placeholder.com/80" },
+            { id: "584406", nama: "Fajar Nugraha", jabatan: "Technician", foto: "https://via.placeholder.com/80" },
+            { id: "584407", nama: "Gilang Ramadhan", jabatan: "Junior Technician", foto: "https://via.placeholder.com/80" },
+            { id: "584408", nama: "Hendra Kurnia", jabatan: "Technician", foto: "https://via.placeholder.com/80" },
+            { id: "584409", nama: "Irfan Hakim", jabatan: "Senior Technician", foto: "https://via.placeholder.com/80" },
+            { id: "584410", nama: "Joko Susilo", jabatan: "Technician", foto: "https://via.placeholder.com/80" },
+            { id: "584411", nama: "Kiki Arisandi", jabatan: "Junior Technician", foto: "https://via.placeholder.com/80" },
+            { id: "584412", nama: "Lukman Hakim", jabatan: "Technician", foto: "https://via.placeholder.com/80" },
+            { id: "584413", nama: "Muhammad Rizky", jabatan: "Technician", foto: "https://via.placeholder.com/80" }
+        ];
+
+        function renderPersonelList() {
+            const container = document.getElementById('personnel-container');
+            container.innerHTML = ''; // Bersihkan kontainer
+
+            dataPersonilTCR1.forEach(person => {
+                const cardHtml = `
+                    <div class="person-card" onclick="bukaDetailPersonil('${person.id}')">
+                        <img src="${person.foto}" alt="${person.nama}" class="avatar">
+                        <div class="person-name">${person.nama}</div>
+                        <div class="person-id">ID: ${person.id}</div>
+                        <div class="person-role">${person.jabatan}</div>
+                    </div>
+                `;
+                container.innerHTML += cardHtml;
+            });
+        }
+
+        function bukaTCR(nomor) {
+            if (nomor === 1) {
+                document.getElementById('view-dashboard').classList.add('hidden');
+                document.getElementById('view-personnel-list').classList.remove('hidden');
+                renderPersonelList(); // Menampilkan 13 personil
+            } else {
+                alert("Halaman TCR " + nomor + " sedang disiapkan.");
+            }
+        }
+
+        function kembaliKeDashboard() {
+            document.getElementById('view-personnel-list').classList.add('hidden');
+            document.getElementById('view-dashboard').classList.remove('hidden');
+        }
+
+        function bukaDetailPersonil(id) {
+            alert("Membuka Ability List untuk Personil ID: " + id + "\n(Tahap selanjutnya akan kita buatkan halamannya!)");
+        }
+
         function bukaHalamanLogin() {
             document.getElementById('view-home').classList.add('hidden');
             document.getElementById('view-login').classList.remove('hidden');
@@ -359,6 +318,7 @@
         function bukaHalamanUtama() {
             document.getElementById('view-login').classList.add('hidden');
             document.getElementById('view-dashboard').classList.add('hidden');
+            document.getElementById('view-personnel-list').classList.add('hidden');
             document.getElementById('auth-section').classList.remove('hidden');
             document.getElementById('view-home').classList.remove('hidden');
         }
@@ -371,20 +331,12 @@
 
         function togglePasswordVisibility() {
             const passwordInput = document.getElementById('userPassword');
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-            } else {
-                passwordInput.type = 'password';
-            }
+            passwordInput.type = (passwordInput.type === 'password') ? 'text' : 'password';
         }
 
         function aksesTamu() {
             document.getElementById('auth-section').classList.add('hidden');
             document.getElementById('view-dashboard').classList.remove('hidden');
-        }
-
-        function bukaTCR(nomor) {
-            alert("Membuka Halaman Selanjutnya untuk TCR " + nomor);
         }
 
         function updateTanggal() {
@@ -396,6 +348,5 @@
 
         updateTanggal();
     </script>
-
 </body>
 </html>
