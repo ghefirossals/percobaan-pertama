@@ -12,7 +12,17 @@
             padding: 0;
         }
 
-        /* Pembungkus khusus Login/Halaman Awal agar selalu presisi di tengah */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "SF Pro", sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        /* PEMBUNGKUS UTAMA: Memaksa elemen di dalamnya (container) tepat di tengah layar */
         .auth-wrapper {
             display: flex;
             flex-direction: column;
@@ -21,25 +31,6 @@
             min-height: 100vh;
             width: 100%;
             padding: 20px;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "SF Pro", sans-serif;
-            background-color: #f4f6f9;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden; /* Mencegah geser ke samping */
-            overflow-y: auto;   /* Memastikan fitur scroll ke bawah selalu aktif */
-        }
-
-        .date-display {
-            font-size: 13px;
-            font-weight: 500;
-            color: #718096;
-            margin-top: 14px;
-            letter-spacing: 0.3px;
-            text-align: center;
         }
 
         .container {
@@ -52,6 +43,7 @@
             text-align: center;
             max-width: 400px;
             width: 100%;
+            margin: 0 auto; /* Memastikan posisi horizontal selalu di tengah */
         }
         
         .container::before {
@@ -79,7 +71,16 @@
             margin-bottom: 28px;
         }
 
-        /* Desain Kolom Input */
+        .date-display {
+            font-size: 13px;
+            font-weight: 500;
+            color: #718096;
+            margin-top: 14px;
+            letter-spacing: 0.3px;
+            text-align: center;
+        }
+
+        /* Form & Input */
         .form-group {
             text-align: left;
             margin-bottom: 16px;
@@ -101,14 +102,8 @@
             border: 1px solid #d3e3f8;
             border-radius: 8px;
             outline: none;
-            transition: border-color 0.2s;
         }
 
-        .form-group input:focus {
-            border-color: #0070f3;
-        }
-
-        /* Pembungkus Password & Tombol Mata */
         .password-wrapper {
             position: relative;
             display: flex;
@@ -126,17 +121,9 @@
             border: none;
             cursor: pointer;
             color: #718096;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0;
         }
 
-        .toggle-password:hover {
-            color: #1a202c;
-        }
-
-        /* Desain Tombol Utama */
+        /* Tombol Utama */
         .btn-group {
             display: flex;
             flex-direction: column;
@@ -153,7 +140,6 @@
             border-radius: 8px;
             border: none;
             cursor: pointer;
-            transition: all 0.2s ease;
         }
 
         .btn-primary {
@@ -161,17 +147,9 @@
             color: #ffffff;
         }
 
-        .btn-primary:hover {
-            opacity: 0.92;
-        }
-
         .btn-secondary {
             background-color: #ebf3fe;
             color: #004b73;
-        }
-
-        .btn-secondary:hover {
-            background-color: #dbe8fc;
         }
 
         .btn-back {
@@ -181,10 +159,6 @@
             cursor: pointer;
             border: none;
             margin-top: 10px;
-        }
-
-        .btn-back:hover {
-            color: #1a202c;
         }
 
         .info-box {
@@ -198,12 +172,9 @@
             display: none !important;
         }
         
+        /* Dashboard Styling */
         #view-dashboard {
-            position: relative;
-            top: 0;
-            left: 0;
             width: 100%;
-            z-index: 999;
         }
         
         .navbar-top {
@@ -217,38 +188,19 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-            gap: 15px;
         }
-
-        .nav-left { display: flex; flex-direction: column; }
-        .nav-title { font-size: 18px; font-weight: 700; }
-        .nav-subtitle { font-size: 12px; opacity: 0.85; margin-top: 2px; }
-
-        .nav-center { flex: 1; max-width: 380px; }
-        .nav-search {
-            display: flex;
-            align-items: center;
-            background-color: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 8px;
-            padding: 6px 12px;
-            gap: 8px;
-        }
-        .nav-search svg { color: #ffffff; opacity: 0.8; }
-        .nav-search input {
-            border: none; background: transparent; outline: none;
-            width: 100%; font-size: 13px; color: #ffffff;
-        }
-        .nav-search input::placeholder { color: rgba(255, 255, 255, 0.7); }
 
         .btn-logout-nav {
-            background-color: #ffffff; color: #004b73; border: none;
-            padding: 8px 16px; border-radius: 6px; font-size: 12px;
-            font-weight: 600; cursor: pointer;
+            background-color: #ffffff; 
+            color: #004b73; 
+            border: none;
+            padding: 8px 16px; 
+            border-radius: 6px; 
+            font-size: 12px;
+            font-weight: 600; 
+            cursor: pointer;
         }
 
-        /* Container Grid untuk 5 Kotak */
         .cards-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -259,33 +211,19 @@
         }
 
         @media (max-width: 900px) {
-            .cards-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .cards-container { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 600px) {
-            .cards-container {
-                grid-template-columns: 1fr;
-            }
+            .cards-container { grid-template-columns: 1fr; }
         }
 
-        /* Desain Kotak (Card) */
         .tcr-card {
             background-color: #ffffff;
             border-radius: 14px;
             padding: 32px 24px;
             box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
             border: 1px solid #e2e8f0;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
             text-align: center;
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
-        }
-
-        .tcr-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 16px 30px rgba(0, 0, 0, 0.12);
         }
 
         .tcr-title {
@@ -299,10 +237,7 @@
             font-size: 13px;
             font-weight: 600;
             color: #718096;
-            letter-spacing: 0.5px;
-            line-height: 1.5;
             margin-bottom: 28px;
-            min-height: 40px;
         }
 
         .btn-card-action {
@@ -315,28 +250,16 @@
             border-radius: 8px;
             cursor: pointer;
             width: 100%;
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-card-action:hover {
-            opacity: 0.92;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-card-action:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 <body>
 
-    <!-- PEMBUNGKUS HALAMAN UTAMA & LOGIN -->
+    <!-- HALAMAN AWAL / LOGIN -->
     <div id="auth-section" class="auth-wrapper">
         <div class="container">
-            <!-- TAMPILAN 1: HALAMAN UTAMA -->
+            
+            <!-- TAMPILAN 1: HOME -->
             <div id="view-home">
                 <h1>Personel Ability List TCR</h1>
                 <p class="subtitle">CI 584461</p>
@@ -352,7 +275,7 @@
                 </div>
             </div>
 
-            <!-- TAMPILAN 2: FORM LOGIN -->
+            <!-- TAMPILAN 2: LOGIN -->
             <div id="view-login" class="hidden">
                 <h1>Personel Ability List TCR</h1>
                 <p class="subtitle">Please enter your name and password to log in.</p>
@@ -367,11 +290,8 @@
                         <label for="userPassword">Password</label>
                         <div class="password-wrapper">
                             <input type="password" id="userPassword" placeholder="Masukkan Password" required>
-                            <button type="button" class="toggle-password" onclick="togglePasswordVisibility()" aria-label="Tampilkan Password">
-                                <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                                    <circle cx="12" cy="12" r="3"></circle>
-                                </svg>
+                            <button type="button" class="toggle-password" onclick="togglePasswordVisibility()">
+                                <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
                             </button>
                         </div>
                     </div>
@@ -383,75 +303,48 @@
 
                 <button class="btn-back" onclick="bukaHalamanUtama()">← Kembali ke Halaman Utama</button>
             </div>
+
         </div>
         
-        <!-- TANGGAL DI BAWAH KOTAK -->
+        <!-- Tanggal ditarik masuk ke dalam wrapper agar ikut ke tengah -->
         <div id="current-date" class="date-display"></div>
     </div>
 
-    <!-- TAMPILAN DASHBOARD MODE TAMU -->
+    <!-- HALAMAN DASHBOARD TAMU -->
     <div id="view-dashboard" class="hidden">
         <header class="navbar-top">
-            <div class="nav-left">
-                <span class="nav-title">Personel Ability List TCR</span>
-                <span class="nav-subtitle">
-                    <span id="nav-date"></span> | Last updated: <strong style="color: #6ee7b7;">Hari ini</strong>
-                </span>
+            <div>
+                <span style="font-weight: bold; font-size: 18px;">Personel Ability List TCR</span>
             </div>
-
-            <div class="nav-center">
-                <div class="nav-search">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                    <input type="text" placeholder="Cari data atau dokumen...">
-                </div>
-            </div>
-
-            <div class="nav-right">
+            <div>
                 <button class="btn-logout-nav" onclick="bukaHalamanUtama()">Keluar</button>
             </div>
         </header>
         
         <div class="cards-container">
             <div class="tcr-card">
-                <div>
-                    <div class="tcr-title">TCR 1</div>
-                    <div class="tcr-subtitle">SHEETMETAL, ULD & MEAL TROLLEY</div>
-                </div>
+                <div class="tcr-title">TCR 1</div>
+                <div class="tcr-subtitle">SHEETMETAL, ULD & MEAL TROLLEY</div>
                 <button class="btn-card-action" onclick="bukaTCR(1)">Buka Halaman</button>
             </div>
-
             <div class="tcr-card">
-                <div>
-                    <div class="tcr-title">TCR 2</div>
-                    <div class="tcr-subtitle">COMPOSITE</div>
-                </div>
+                <div class="tcr-title">TCR 2</div>
+                <div class="tcr-subtitle">COMPOSITE</div>
                 <button class="btn-card-action" onclick="bukaTCR(2)">Buka Halaman</button>
             </div>
-
             <div class="tcr-card">
-                <div>
-                    <div class="tcr-title">TCR 3</div>
-                    <div class="tcr-subtitle">CABIN SEAT</div>
-                </div>
+                <div class="tcr-title">TCR 3</div>
+                <div class="tcr-subtitle">CABIN SEAT</div>
                 <button class="btn-card-action" onclick="bukaTCR(3)">Buka Halaman</button>
             </div>
-
             <div class="tcr-card">
-                <div>
-                    <div class="tcr-title">TCR 4</div>
-                    <div class="tcr-subtitle">CABIN MONUMENT</div>
-                </div>
+                <div class="tcr-title">TCR 4</div>
+                <div class="tcr-subtitle">CABIN MONUMENT</div>
                 <button class="btn-card-action" onclick="bukaTCR(4)">Buka Halaman</button>
             </div>
-
             <div class="tcr-card">
-                <div>
-                    <div class="tcr-title">TCR 5</div>
-                    <div class="tcr-subtitle">MACHINING</div>
-                </div>
+                <div class="tcr-title">TCR 5</div>
+                <div class="tcr-subtitle">MACHINING</div>
                 <button class="btn-card-action" onclick="bukaTCR(5)">Buka Halaman</button>
             </div>
         </div>
@@ -478,14 +371,10 @@
 
         function togglePasswordVisibility() {
             const passwordInput = document.getElementById('userPassword');
-            const eyeIcon = document.getElementById('eye-icon');
-            
             if (passwordInput.type === 'password') {
                 passwordInput.type = 'text';
-                eyeIcon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>';
             } else {
                 passwordInput.type = 'password';
-                eyeIcon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>';
             }
         }
 
@@ -499,23 +388,10 @@
         }
 
         function updateTanggal() {
-            const opsi = { 
-                weekday: 'long', 
-                day: 'numeric', 
-                month: 'long', 
-                year: 'numeric' 
-            };
+            const opsi = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
             const hariIni = new Date().toLocaleDateString('id-ID', opsi);
-            
             const dateElem = document.getElementById('current-date');
-            if (dateElem) {
-                dateElem.innerText = hariIni;
-            }
-            
-            const navDateElem = document.getElementById('nav-date');
-            if (navDateElem) {
-                navDateElem.innerText = hariIni;
-            }
+            if (dateElem) dateElem.innerText = hariIni;
         }
 
         updateTanggal();
