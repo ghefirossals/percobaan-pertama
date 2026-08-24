@@ -22,6 +22,7 @@
             overflow-y: auto;
         }
 
+        /* LEVEL 1: LOGIN / HOME STYLING */
         .auth-wrapper {
             display: flex;
             flex-direction: column;
@@ -74,7 +75,7 @@
         .info-box { margin-top: 24px; font-size: 12px; color: #a0aec0; line-height: 1.5; }
         .hidden { display: none !important; }
         
-        /* Dashboard & Layout Umum */
+        /* NAVBAR & DASHBOARD GENERAL */
         #view-dashboard, #view-personnel-list { width: 100%; }
         .navbar-top {
             position: sticky; top: 0; z-index: 1000; width: 100%;
@@ -88,12 +89,17 @@
             font-weight: 600; cursor: pointer;
         }
 
+        /* LEVEL 2: MENU DASHBOARD TCR 1-5 */
         .cards-container {
             display: grid; grid-template-columns: repeat(3, 1fr);
             gap: 28px; padding: 40px 24px; max-width: 1100px; margin: 20px auto 40px auto;
         }
+        .tcr-card { background-color: #ffffff; border-radius: 14px; padding: 32px 24px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); border: 1px solid #e2e8f0; text-align: center; }
+        .tcr-title { font-size: 22px; font-weight: 700; color: #004b73; margin-bottom: 10px; }
+        .tcr-subtitle { font-size: 13px; font-weight: 600; color: #718096; margin-bottom: 28px; }
+        .btn-card-action { background: linear-gradient(90deg, #004b73 0%, #115c44 100%); color: #ffffff; border: none; padding: 12px 20px; font-size: 13px; font-weight: 600; border-radius: 8px; cursor: pointer; width: 100%; }
 
-        /* GRID PERSONIL (RESPONSIF) */
+        /* LEVEL 3: GRID CARD PERSONIL DARI SPREADSHEET */
         .personnel-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -103,7 +109,6 @@
             margin: 0 auto;
         }
 
-        /* DESAIN CARD PERSONIL */
         .person-card {
             background-color: #ffffff;
             border-radius: 12px;
@@ -127,6 +132,7 @@
             object-fit: cover;
             margin: 0 auto 12px auto;
             border: 3px solid #ebf3fe;
+            background-color: #e2e8f0;
         }
 
         .person-name {
@@ -152,18 +158,14 @@
             color: #718096;
         }
 
-        .tcr-card { background-color: #ffffff; border-radius: 14px; padding: 32px 24px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); border: 1px solid #e2e8f0; text-align: center; }
-        .tcr-title { font-size: 22px; font-weight: 700; color: #004b73; margin-bottom: 10px; }
-        .tcr-subtitle { font-size: 13px; font-weight: 600; color: #718096; margin-bottom: 28px; }
-        .btn-card-action { background: linear-gradient(90deg, #004b73 0%, #115c44 100%); color: #ffffff; border: none; padding: 12px 20px; font-size: 13px; font-weight: 600; border-radius: 8px; cursor: pointer; width: 100%; }
-
+        /* RESPONSIVE LAYOUT */
         @media (max-width: 900px) { .cards-container { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 600px) { .cards-container { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
-    <!-- LEVEL 1: LOGIN / HOME -->
+    <!-- LEVEL 1: HALAMAN AWAL & LOGIN -->
     <div id="auth-section" class="auth-wrapper">
         <div class="container">
             <div id="view-home">
@@ -206,7 +208,7 @@
         <div id="current-date" class="date-display"></div>
     </div>
 
-    <!-- LEVEL 2: DASHBOARD UTAMA -->
+    <!-- LEVEL 2: DASHBOARD UTAMA (PILIH TCR 1 - TCR 5) -->
     <div id="view-dashboard" class="hidden">
         <header class="navbar-top">
             <div><span style="font-weight: bold; font-size: 18px;">Personel Ability List TCR</span></div>
@@ -242,63 +244,67 @@
         </div>
     </div>
 
-    <!-- LEVEL 3: LIST 13 PERSONIL TCR 1 -->
+    <!-- LEVEL 3: LIST PERSONIL HASIL FETCH DARI SPREADSHEET -->
     <div id="view-personnel-list" class="hidden">
         <header class="navbar-top">
             <div>
                 <button class="btn-back-nav" onclick="kembaliKeDashboard()">← Kembali ke Dashboard</button>
-                <span id="tcr-page-title" style="font-weight: bold; font-size: 18px; margin-left: 15px;">Daftar Personil TCR 1</span>
+                <span id="tcr-page-title" style="font-weight: bold; font-size: 18px; margin-left: 15px;">Daftar Personil</span>
             </div>
         </header>
 
         <div id="personnel-container" class="personnel-grid">
-            <!-- 13 Card Personil akan di-generate otomatis oleh JavaScript di bawah -->
+            <!-- Data personil dari Spreadsheet akan otomatis dimuat di sini -->
         </div>
     </div>
 
     <script>
-        // Data Dummy 13 Personil TCR 1
-        const dataPersonilTCR1 = [
-            { id: "584401", nama: "Ahmad Subagja", jabatan: "Senior Technician", foto: "https://via.placeholder.com/80" },
-            { id: "584402", nama: "Budi Santoso", jabatan: "Technician", foto: "https://via.placeholder.com/80" },
-            { id: "584403", nama: "Candra Wijaya", jabatan: "Junior Technician", foto: "https://via.placeholder.com/80" },
-            { id: "584404", nama: "Deni Pratama", jabatan: "Technician", foto: "https://via.placeholder.com/80" },
-            { id: "584405", nama: "Eko Setiawan", jabatan: "Senior Technician", foto: "https://via.placeholder.com/80" },
-            { id: "584406", nama: "Fajar Nugraha", jabatan: "Technician", foto: "https://via.placeholder.com/80" },
-            { id: "584407", nama: "Gilang Ramadhan", jabatan: "Junior Technician", foto: "https://via.placeholder.com/80" },
-            { id: "584408", nama: "Hendra Kurnia", jabatan: "Technician", foto: "https://via.placeholder.com/80" },
-            { id: "584409", nama: "Irfan Hakim", jabatan: "Senior Technician", foto: "https://via.placeholder.com/80" },
-            { id: "584410", nama: "Joko Susilo", jabatan: "Technician", foto: "https://via.placeholder.com/80" },
-            { id: "584411", nama: "Kiki Arisandi", jabatan: "Junior Technician", foto: "https://via.placeholder.com/80" },
-            { id: "584412", nama: "Lukman Hakim", jabatan: "Technician", foto: "https://via.placeholder.com/80" },
-            { id: "584413", nama: "Muhammad Rizky", jabatan: "Technician", foto: "https://via.placeholder.com/80" }
-        ];
+        // PASANG URL WEB APP GOOGLE APPS SCRIPT MILIKMU DI BAWAH INI:
+        const SCRIPT_URL = https://script.google.com/macros/s/AKfycbyggMH6lNMKlDnxgPmr-CTS-OGkziPEonAtgteQoKuOzMF2bRSBghLUWmJXmqGA22QP/exec;
 
-        function renderPersonelList() {
+        // MENGAMBIL DATA PERSONIL DARI SPREADSHEET SECARA LIVE
+        function bukaTCR(nomorTCR) {
+            const sheetName = "TCR" + nomorTCR; 
+            
+            document.getElementById('view-dashboard').classList.add('hidden');
+            document.getElementById('view-personnel-list').classList.remove('hidden');
+            document.getElementById('tcr-page-title').innerText = "Daftar Personil TCR " + nomorTCR;
+            
             const container = document.getElementById('personnel-container');
-            container.innerHTML = ''; // Bersihkan kontainer
+            container.innerHTML = '<p style="text-align:center; grid-column: 1/-1; padding: 40px; color: #718096;">Memuat data dari Google Sheets...</p>';
 
-            dataPersonilTCR1.forEach(person => {
-                const cardHtml = `
-                    <div class="person-card" onclick="bukaDetailPersonil('${person.id}')">
-                        <img src="${person.foto}" alt="${person.nama}" class="avatar">
-                        <div class="person-name">${person.nama}</div>
-                        <div class="person-id">ID: ${person.id}</div>
-                        <div class="person-role">${person.jabatan}</div>
-                    </div>
-                `;
-                container.innerHTML += cardHtml;
-            });
-        }
+            fetch(`${SCRIPT_URL}?sheet=${sheetName}`)
+                .then(response => response.json())
+                .then(data => {
+                    container.innerHTML = ''; 
 
-        function bukaTCR(nomor) {
-            if (nomor === 1) {
-                document.getElementById('view-dashboard').classList.add('hidden');
-                document.getElementById('view-personnel-list').classList.remove('hidden');
-                renderPersonelList(); // Menampilkan 13 personil
-            } else {
-                alert("Halaman TCR " + nomor + " sedang disiapkan.");
-            }
+                    if (!data || data.length === 0 || data.error) {
+                        container.innerHTML = '<p style="text-align:center; grid-column: 1/-1; padding: 40px; color: #e53e3e;">Data tidak ditemukan atau sheet kosong.</p>';
+                        return;
+                    }
+
+                    // Render setiap card personil secara dinamis berdasarkan data spreadsheet
+                    data.forEach(person => {
+                        const nama = person.nama || "Tanpa Nama";
+                        const id = person.id || "-";
+                        const jabatan = person.jabatan || "-";
+                        const foto = person.foto || person.photo || "https://via.placeholder.com/80";
+
+                        const cardHtml = `
+                            <div class="person-card" onclick="bukaDetailPersonil('${id}')">
+                                <img src="${foto}" alt="${nama}" class="avatar" onerror="this.src='https://via.placeholder.com/80'">
+                                <div class="person-name">${nama}</div>
+                                <div class="person-id">ID: ${id}</div>
+                                <div class="person-role">${jabatan}</div>
+                            </div>
+                        `;
+                        container.innerHTML += cardHtml;
+                    });
+                })
+                .catch(error => {
+                    console.error("Error fetching data:", error);
+                    container.innerHTML = '<p style="text-align:center; color:#e53e3e; grid-column: 1/-1; padding: 40px;">Gagal mengambil data dari Spreadsheet. Periksa koneksi atau URL Script.</p>';
+                });
         }
 
         function kembaliKeDashboard() {
@@ -307,7 +313,7 @@
         }
 
         function bukaDetailPersonil(id) {
-            alert("Membuka Ability List untuk Personil ID: " + id + "\n(Tahap selanjutnya akan kita buatkan halamannya!)");
+            alert("Membuka Ability List untuk Personil ID: " + id + "\n\n(Halaman detail profile & ability list akan kita buat setelah ini!)");
         }
 
         function bukaHalamanLogin() {
