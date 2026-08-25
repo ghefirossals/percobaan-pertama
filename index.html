@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personel Ability List TCR - Form GMF/Q-364 R1</title>
+    <title>Personnel Ability List TCR - Form GMF/Q-364 R1</title>
     
     <style>
         * {
@@ -228,7 +228,7 @@
         .web-table td { padding: 12px; border-bottom: 1px solid #e2e8f0; color: #2d3748; }
         .web-table tr:hover { background-color: #f7fafc; }
 
-        /* AREA KHUSUS CETAK PRINT PDF FORM GMF/Q-364 R1 PRESISI TEMPLATE */
+        /* AREA KHUSUS CETAK PRINT PDF FORM GMF/Q-364 R1 PRESISI TEMPLATE REVISI */
         #printable-area { display: none; }
 
         @media print {
@@ -247,18 +247,16 @@
 
             @page { 
                 size: A4 portrait; 
-                margin: 0.6cm; 
+                margin: 1.2cm 1cm 3.2cm 1cm; /* Margin bawah dikosongkan untuk footer fixed */
             }
 
-            /* CONTAINER BINGKAI UTAMA HUKUM DOKUMEN (OUTER BORDER) */
+            /* BINGKAI LUAR SETIAP HALAMAN */
             .print-outer-box {
                 border: 1.5px solid #000;
-                padding: 10px 12px 6px 12px;
-                min-height: 96vh;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
+                padding: 12px;
+                min-height: 94vh;
                 box-sizing: border-box;
+                position: relative;
             }
 
             .print-table-main {
@@ -266,70 +264,61 @@
                 border-collapse: collapse;
             }
 
-            /* HEADER RESMI TEMPLATE GMF */
-            .print-header-layout {
-                display: flex;
-                align-items: flex-start;
-                justify-content: space-between;
-                border-bottom: 1.5px solid #000;
-                padding-bottom: 6px;
-                margin-bottom: 8px;
+            /* HEADER BERULANG DI TIAP HALAMAN */
+            thead {
+                display: table-header-group;
             }
 
-            .print-logo-left { 
-                width: 200px; 
-                text-align: left; 
+            /* FOOTER BERULANG DI TIAP HALAMAN */
+            tfoot {
+                display: table-footer-group;
             }
-            .print-logo-left img { 
-                width: 155px; 
-                height: auto; 
-                display: block; 
+
+            /* HEADER CETAK REVISI */
+            .print-header-layout {
+                text-align: center;
+                border-bottom: 1.5px solid #000;
+                padding-bottom: 8px;
+                margin-bottom: 12px;
+                width: 100%;
             }
-            .print-logo-sub {
-                font-size: 7.5pt;
+
+            .print-header-logo {
+                max-width: 11.5cm;
+                max-height: 2.5cm;
+                width: auto;
+                height: auto;
+                display: block;
+                margin: 0 auto 6px auto;
+                object-fit: contain;
+            }
+
+            .print-header-title {
+                font-size: 14pt;
                 font-weight: bold;
-                letter-spacing: 0.3px;
-                margin-top: 2px;
-                color: #000;
-            }
-            
-            .print-title-center { 
-                text-align: center; 
-                flex-grow: 1; 
-                padding-top: 5px;
-            }
-            .print-title-center .main-title { 
-                font-size: 15pt; 
-                font-weight: bold; 
+                text-transform: uppercase;
                 letter-spacing: 0.5px;
             }
-            
-            .print-info-right { 
-                width: 220px; 
-                text-align: right; 
-                font-size: 7.5pt;
-                line-height: 1.35;
-            }
 
-            /* BARIS DATA PERSONIL */
+            /* DATA PERSONIL DENGAN UKURAN FONT 14PT */
             .print-person-grid {
                 width: 100%;
-                margin-bottom: 8px;
-                font-size: 8.5pt;
+                margin-bottom: 12px;
+                font-size: 14pt;
                 border-collapse: collapse;
             }
-            .print-person-grid td { padding: 1.5px 2px; vertical-align: top; }
-            .print-person-grid td.lbl { font-weight: bold; width: 135px; }
+            .print-person-grid td { padding: 3px 2px; vertical-align: top; }
+            .print-person-grid td.lbl { font-weight: bold; width: 180px; }
 
-            /* TABEL PAL DATA UTAMA */
+            /* TABEL PAL DATA UTAMA DENGAN FONT 14PT */
             .print-pal-table { 
                 width: 100%; 
                 border-collapse: collapse; 
-                font-size: 7.5pt; 
+                font-size: 14pt; 
             }
             .print-pal-table th, .print-pal-table td { 
                 border: 1.2px solid #000; 
-                padding: 3px 4px; 
+                padding: 6px; 
                 word-wrap: break-word;
             }
             .print-pal-table th { 
@@ -340,39 +329,42 @@
             }
             
             /* PRESISI KOLOM */
-            .col-no { width: 32px; text-align: center; }
+            .col-no { width: 45px; text-align: center; }
             .col-desc { text-align: left; }
-            .col-pn { width: 170px; text-align: left; }
-            .col-ata { width: 85px; text-align: center; white-space: nowrap !important; }
-            .col-auth { width: 110px; text-align: center; }
+            .col-pn { width: 220px; text-align: left; }
+            .col-ata { width: 110px; text-align: center; white-space: nowrap !important; }
+            .col-auth { width: 140px; text-align: center; }
 
-            /* FOOTER 3 KOLOM BERBINGKAI DI DALAM KOTAK OUTLINE */
-            .print-footer-container {
-                margin-top: 10px;
-                width: 100%;
+            /* FOOTER 3 KOLOM RESMI (DITAMPILKAN FIKS DI TIAP-TIAP HALAMAN) */
+            .print-footer-fixed {
+                position: fixed;
+                bottom: 0.4cm;
+                left: 1cm;
+                right: 1cm;
+                width: calc(100% - 2cm);
+                background-color: #ffffff;
             }
 
             .print-footer-table {
                 width: 100%;
                 border-collapse: collapse;
-                font-size: 8pt;
+                font-size: 11pt;
                 border: 1px solid #000;
             }
 
             .print-footer-table td {
                 border: 1px solid #000;
-                padding: 4px 8px;
+                padding: 6px 10px;
                 vertical-align: top;
-                height: 55px;
+                height: 60px;
             }
 
-            .ft-col-date { width: 25%; }
-            .ft-col-approval { width: 50%; text-align: center; }
+            .ft-col-date { width: 30%; }
+            .ft-col-approval { width: 45%; text-align: center; }
             .ft-col-page { width: 25%; text-align: right; }
 
-            /* TEXT DI LUAR BINGKAI FOOTER */
             .print-external-form-no {
-                font-size: 8pt;
+                font-size: 10pt;
                 font-weight: bold;
                 margin-top: 4px;
                 text-align: left;
@@ -396,7 +388,7 @@
     <div id="auth-section" class="auth-wrapper">
         <div class="container">
             <div id="view-home">
-                <h1>Personel Ability List TCR</h1>
+                <h1>Personnel Ability List TCR</h1>
                 <p class="subtitle">CI 584461</p>
                 <div class="btn-group">
                     <button type="button" class="btn btn-primary" onclick="bukaHalamanLogin()">Login</button>
@@ -409,7 +401,7 @@
             </div>
 
             <div id="view-login" class="hidden">
-                <h1>Personel Ability List TCR</h1>
+                <h1>Personnel Ability List TCR</h1>
                 <p class="subtitle">Please enter your name and password to log in.</p>
                 <form onsubmit="prosesLogin(event)">
                     <div class="form-group">
@@ -438,7 +430,7 @@
     <!-- DASHBOARD UTAMA -->
     <div id="view-dashboard" class="hidden">
         <header class="navbar-top">
-            <div><span style="font-weight: bold; font-size: 18px;">Personel Ability List TCR</span></div>
+            <div><span style="font-weight: bold; font-size: 18px;">Personnel Ability List TCR</span></div>
             <div><button type="button" class="btn-logout-nav" onclick="bukaHalamanUtama()">Keluar</button></div>
         </header>
         
@@ -530,33 +522,24 @@
         </div>
     </div>
 
-    <!-- AREA CETAK FORM GMF/Q-364 R1 100% PERSISI TEMPLATE PDF -->
+    <!-- AREA CETAK FORM GMF/Q-364 R1 DENGAN REVISI HEADER & FOOTER FIKS TIAP HALAMAN -->
     <div id="printable-area">
         <div class="print-outer-box">
             <table class="print-table-main">
                 <thead>
                     <tr>
                         <td>
-                            <!-- HEADER 3 BAGIAN -->
+                            <!-- HEADER CETAK REVISI (TENGAN, MAKS 2.5x11.5 CM, FONT 14PT) -->
                             <div class="print-header-layout">
-                                <div class="print-logo-left">
-                                    <img src="https://lh3.googleusercontent.com/d/1xvTXFYJR1e6Nm8Cl2sktf8s63gq5xj1I" alt="GMFAeroAsia Logo">
-                                    <div class="print-logo-sub">GARUDA INDONESIA GROUP</div>
-                                </div>
-                                <div class="print-title-center">
-                                    <div class="main-title">PERSONNEL ABILITY LIST</div>
-                                </div>
-                                <div class="print-info-right">
-                                    <div><strong>Parent Procedure :</strong> QP 308-01</div>
-                                    <div><strong>Related Authority :</strong> DGCA Indonesia,<br>FAA</div>
-                                </div>
+                                <img src="https://lh3.googleusercontent.com/d/1xvTXFYJR1e6Nm8Cl2sktf8s63gq5xj1I" alt="GMFAeroAsia Logo" class="print-header-logo">
+                                <div class="print-header-title">PERSONNEL ABILITY LIST</div>
                             </div>
                             
-                            <!-- DATA PERSONIL -->
+                            <!-- DATA PERSONIL (UKURAN FONT 14PT) -->
                             <table class="print-person-grid">
                                 <tr>
                                     <td class="lbl">Name</td>
-                                    <td style="width: 8px;">:</td>
+                                    <td style="width: 10px;">:</td>
                                     <td id="print-nama">-</td>
                                 </tr>
                                 <tr>
@@ -577,7 +560,7 @@
                 <tbody>
                     <tr>
                         <td>
-                            <!-- TABEL PAL 5 KOLOM BAKU -->
+                            <!-- TABEL PAL 5 KOLOM (UKURAN FONT 14PT) -->
                             <table class="print-pal-table">
                                 <thead>
                                     <tr>
@@ -596,26 +579,26 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
 
-            <!-- FOOTER CONTAINER DENGAN KOTAK 3 KOLOM RESMI -->
-            <div class="print-footer-container">
-                <table class="print-footer-table">
-                    <tr>
-                        <td class="ft-col-date">
-                            <strong>Date:</strong><br>
-                            <span id="print-date">-</span>
-                        </td>
-                        <td class="ft-col-approval">
-                            <strong>Approved by General Manager</strong><br><br>
-                            <span style="font-size: 7pt; color: #555;">Name & Signature</span>
-                        </td>
-                        <td class="ft-col-page">
-                            <span class="page-number-text"></span>
-                        </td>
-                    </tr>
-                </table>
-                <div class="print-external-form-no">Form No.: GMF/Q-364 R1</div>
-            </div>
+        <!-- FOOTER 3 KOLOM BERBINGKAI FIKS DI TIAP-TIAP HALAMAN -->
+        <div class="print-footer-fixed">
+            <table class="print-footer-table">
+                <tr>
+                    <td class="ft-col-date">
+                        <strong>Date:</strong><br>
+                        <span id="print-date">-</span>
+                    </td>
+                    <td class="ft-col-approval">
+                        <strong>Approved by General Manager</strong><br><br>
+                        <span style="font-size: 8pt; color: #555;">Name & Signature</span>
+                    </td>
+                    <td class="ft-col-page">
+                        <span class="page-number-text"></span>
+                    </td>
+                </tr>
+            </table>
+            <div class="print-external-form-no">Form No.: GMF/Q-364 R1</div>
         </div>
     </div>
 
