@@ -247,7 +247,7 @@
 
             @page { 
                 size: A4 portrait; 
-                margin: 1.2cm 1cm 3.2cm 1cm; /* Margin bawah dikosongkan untuk footer fixed */
+                margin: 0.6cm;
             }
 
             /* BINGKAI LUAR SETIAP HALAMAN */
@@ -284,8 +284,7 @@
             }
 
             .print-header-logo {
-                max-width: 11.5cm;
-                max-height: 2.5cm;
+                max-width: 9.5cm;
                 width: auto;
                 height: auto;
                 display: block;
@@ -294,31 +293,31 @@
             }
 
             .print-header-title {
-                font-size: 14pt;
+                font-size: 10pt;
                 font-weight: bold;
                 text-transform: uppercase;
                 letter-spacing: 0.5px;
             }
 
-            /* DATA PERSONIL DENGAN UKURAN FONT 14PT */
+            /* DATA PERSONIL DENGAN UKURAN FONT 10PT */
             .print-person-grid {
                 width: 100%;
-                margin-bottom: 12px;
-                font-size: 14pt;
+                margin-bottom: 8px;
+                font-size: 10pt;
                 border-collapse: collapse;
             }
-            .print-person-grid td { padding: 3px 2px; vertical-align: top; }
-            .print-person-grid td.lbl { font-weight: bold; width: 180px; }
+            .print-person-grid td { padding: 1.5px 2px; vertical-align: top; }
+            .print-person-grid td.lbl { font-weight: bold; width: 135px; }
 
             /* TABEL PAL DATA UTAMA DENGAN FONT 14PT */
             .print-pal-table { 
                 width: 100%; 
                 border-collapse: collapse; 
-                font-size: 14pt; 
+                font-size: 10pt; 
             }
             .print-pal-table th, .print-pal-table td { 
                 border: 1.2px solid #000; 
-                padding: 6px; 
+                padding: 4px; 
                 word-wrap: break-word;
             }
             .print-pal-table th { 
@@ -329,11 +328,11 @@
             }
             
             /* PRESISI KOLOM */
-            .col-no { width: 45px; text-align: center; }
+            .col-no { width: 35px; text-align: center; }
             .col-desc { text-align: left; }
-            .col-pn { width: 220px; text-align: left; }
-            .col-ata { width: 110px; text-align: center; white-space: nowrap !important; }
-            .col-auth { width: 140px; text-align: center; }
+            .col-pn { width: 180px; text-align: left; }
+            .col-ata { width: 90px; text-align: center; white-space: nowrap !important; }
+            .col-auth { width: 150px; text-align: center; }
 
             /* FOOTER 3 KOLOM RESMI (DITAMPILKAN FIKS DI TIAP-TIAP HALAMAN) */
             .print-footer-fixed {
@@ -348,7 +347,7 @@
             .print-footer-table {
                 width: 100%;
                 border-collapse: collapse;
-                font-size: 11pt;
+                font-size: 10pt;
                 border: 1px solid #000;
             }
 
@@ -590,7 +589,7 @@
                         <span id="print-date">-</span>
                     </td>
                     <td class="ft-col-approval">
-                        <strong>Approved by General Manager</strong><br><br>
+                        <strong>Approved by Structure & Cabin Workshop Divison Head</strong><br><br>
                         <span style="font-size: 8pt; color: #555;">Name & Signature</span>
                     </td>
                     <td class="ft-col-page">
