@@ -78,7 +78,6 @@
 
         .btn-group { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
         
-        /* CSS TOMBOL UTAMA & ANIMASI HOVER/KLIK */
         .btn { 
             display: block; 
             width: 100%; 
@@ -149,7 +148,6 @@
         .btn-download-nav:hover { background-color: #219653; transform: translateY(-1px); }
         .btn-logout-nav:active, .btn-back-nav:active, .btn-download-nav:active { transform: scale(0.95); }
 
-        /* SEARCH INPUT NAVBAR */
         .search-nav-input {
             padding: 8px 14px; font-size: 13px; border-radius: 20px;
             border: none; outline: none; min-width: 220px;
@@ -158,7 +156,6 @@
         }
         .search-nav-input:focus { background-color: #ffffff; box-shadow: 0 0 8px rgba(255,255,255,0.5); }
 
-        /* KARTU TCR 1-5 & ANIMASI POP-UP */
         .cards-container {
             display: grid; grid-template-columns: repeat(3, 1fr);
             gap: 28px; padding: 40px 24px; max-width: 1100px; margin: 20px auto 40px auto;
@@ -210,7 +207,6 @@
         .person-id { font-size: 12px; font-weight: 600; color: #004b73; background-color: #ebf3fe; display: inline-block; padding: 2px 8px; border-radius: 4px; margin-bottom: 8px; }
         .person-role { font-size: 12px; color: #718096; }
 
-        /* PROFILE HEADER & PAL TABLE STYLING */
         .profile-container { max-width: 1100px; margin: 30px auto; padding: 0 24px; }
         .profile-header-card {
             background: #ffffff; border-radius: 12px; padding: 24px;
@@ -232,55 +228,125 @@
         .web-table td { padding: 12px; border-bottom: 1px solid #e2e8f0; color: #2d3748; }
         .web-table tr:hover { background-color: #f7fafc; }
 
-        /* TEMPLATE KHUSUS PRINT PDF (Sembunyi di Web View) */
+        /* AREA KHUSUS CETAK PRINT PDF */
         #printable-area { display: none; }
 
         @media print {
             body * { visibility: hidden; }
             #printable-area, #printable-area * { visibility: visible; }
+            
             #printable-area {
                 display: block !important;
-                position: absolute; left: 0; top: 0; width: 100%; padding: 0; color: #000;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                color: #000;
                 font-family: Arial, Helvetica, sans-serif;
             }
-            
-            .print-header-layout {
-                display: flex; justify-content: space-between; align-items: flex-start;
-                border-bottom: 2px solid #000; padding-bottom: 8px; margin-bottom: 15px;
-            }
-            .print-logo-box img { width: 170px; height: auto; }
-            .print-title-box { text-align: center; flex-grow: 1; padding: 0 10px; }
-            .print-title-box .main-title { font-size: 15pt; font-weight: bold; letter-spacing: 0.5px; }
-            .print-title-box .sub-title { font-size: 9pt; font-weight: bold; color: #444; }
-            
-            .print-info-grid {
-                width: 100%; margin-bottom: 15px; font-size: 9.5pt; border-collapse: collapse;
-            }
-            .print-info-grid td { padding: 3px 5px; vertical-align: top; }
-            .print-info-grid td.lbl { font-weight: bold; width: 130px; }
-            
-            .print-pal-table { width: 100%; border-collapse: collapse; font-size: 9pt; }
-            .print-pal-table th, .print-pal-table td { border: 1px solid #000; padding: 5px 6px; }
-            .print-pal-table th { background-color: #f0f0f0 !important; -webkit-print-color-adjust: exact; text-align: center; font-weight: bold; }
-            
-            /* FOOTER CETAK PERSIS TEMPLATE GMF */
-            .print-footer-container {
-                margin-top: 25px; width: 100%; page-break-inside: avoid;
-            }
-            .print-approval-box {
-                width: 300px; margin-left: auto; border: 1px solid #000; padding: 8px 12px; font-size: 8.5pt;
-            }
-            .print-approval-title { font-weight: bold; margin-bottom: 6px; text-align: center; border-bottom: 1px solid #000; padding-bottom: 4px; }
-            .print-sig-space { height: 45px; } /* Space kosong untuk TTD nanti */
-            .print-approval-name { font-weight: bold; text-align: center; text-decoration: underline; margin-bottom: 2px; }
-            .print-approval-sub { text-align: center; font-size: 7.5pt; color: #333; }
-            
-            .print-doc-footer {
-                display: flex; justify-content: space-between; align-items: center;
-                margin-top: 15px; font-size: 8pt; font-weight: bold; border-top: 1px solid #000; padding-top: 4px;
+
+            @page { 
+                size: A4 portrait; 
+                margin: 0.6cm; 
             }
 
-            @page { size: A4 portrait; margin: 1.2cm; }
+            /* Halaman Kontainer Berulang & Footer Tetap */
+            .print-table-main {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 15px;
+            }
+
+            .print-header-layout {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border-bottom: 2px solid #000;
+                padding-bottom: 6px;
+                margin-bottom: 12px;
+            }
+
+            .print-logo-box { width: 140px; }
+            .print-logo-box img { width: 130px; height: auto; display: block; }
+            
+            .print-title-box { text-align: center; flex-grow: 1; }
+            .print-title-box .main-title { font-size: 15pt; font-weight: bold; letter-spacing: 0.5px; }
+            .print-title-box .sub-title { font-size: 9.5pt; font-weight: bold; color: #333; margin-top: 2px; }
+            
+            .print-spacer { width: 140px; } /* Untuk menyeimbangkan posisi judul di tengah */
+
+            .print-info-grid {
+                width: 100%;
+                margin-bottom: 10px;
+                font-size: 9pt;
+                border-collapse: collapse;
+            }
+            .print-info-grid td { padding: 2px 4px; vertical-align: top; }
+            .print-info-grid td.lbl { font-weight: bold; width: 120px; }
+
+            /* TABEL PAL DATA */
+            .print-pal-table { width: 100%; border-collapse: collapse; font-size: 8.5pt; }
+            .print-pal-table th, .print-pal-table td { 
+                border: 1px solid #000; 
+                padding: 4px 6px; 
+                word-wrap: break-word;
+            }
+            .print-pal-table th { 
+                background-color: #f0f0f0 !important; 
+                -webkit-print-color-adjust: exact; 
+                text-align: center; 
+                font-weight: bold; 
+            }
+            
+            /* PENYESUAIAN LEBAR KOLOM & ATA agar TIDAK TERPOTONG */
+            .col-no { width: 30px; text-align: center; }
+            .col-desc { text-align: left; }
+            .col-pn { width: 170px; text-align: left; }
+            .col-ata { width: 95px; text-align: center; white-space: nowrap; } /* Kolom ATA Dipastikan 1 Baris */
+            .col-auth { width: 110px; text-align: center; }
+
+            /* APPROVAL BOX DI HALAMAN TERAKHIR */
+            .print-approval-container {
+                width: 100%;
+                margin-top: 20px;
+                display: flex;
+                justify-content: flex-end;
+                page-break-inside: avoid;
+            }
+            .print-approval-box {
+                width: 320px;
+                border: 1px solid #000;
+                padding: 8px 12px;
+                font-size: 8.5pt;
+                text-align: center;
+            }
+            .print-approval-title { font-weight: bold; margin-bottom: 4px; border-bottom: 1px solid #000; padding-bottom: 4px; }
+            .print-sig-space { height: 45px; }
+            .print-approval-name { font-weight: bold; text-decoration: underline; margin-bottom: 2px; }
+            .print-approval-sub { font-size: 7.5pt; color: #333; }
+
+            /* FOOTER DOKUMEN BERULANG DI TIAP HALAMAN */
+            .print-fixed-footer {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 8pt;
+                font-weight: bold;
+                border-top: 1px solid #000;
+                padding-top: 4px;
+                background-color: #fff;
+            }
+
+            .page-number::after {
+                content: "Page " counter(page) " of " counter(pages);
+            }
+
+            /* Margin bawah tabel agar tidak menutupi footer fixed */
+            .footer-space { height: 35px; }
         }
 
         @media (max-width: 900px) { .cards-container { grid-template-columns: repeat(2, 1fr); } }
@@ -292,7 +358,7 @@
 </head>
 <body>
 
-    <!-- HALAMAN AWAL / LOGIN -->
+    <!-- HALAMAN LOGIN / UTAMA -->
     <div id="auth-section" class="auth-wrapper">
         <div class="container">
             <div id="view-home">
@@ -386,7 +452,7 @@
         <div id="personnel-container" class="personnel-grid"></div>
     </div>
 
-    <!-- DETAIL PERSONIL & PAL WEB VIEW -->
+    <!-- DETAIL PERSONIL (WEB VIEW) -->
     <div id="view-personnel-detail" class="hidden">
         <header class="navbar-top">
             <div class="navbar-left">
@@ -399,7 +465,6 @@
         </header>
 
         <div class="profile-container">
-            <!-- HEADER PROFIL WEB -->
             <div class="profile-header-card">
                 <img id="detail-foto" src="" alt="Foto" class="profile-header-avatar" onerror="this.src='https://via.placeholder.com/90'">
                 <div class="profile-header-info">
@@ -409,7 +474,6 @@
                 </div>
             </div>
 
-            <!-- TABEL PAL WEB -->
             <div class="pal-table-wrapper">
                 <input type="text" id="search-pal" class="pal-search-box" placeholder="Cari Part Number atau Deskripsi..." onkeyup="filterPAL()">
                 <div style="overflow-x: auto;">
@@ -424,7 +488,7 @@
                             </tr>
                         </thead>
                         <tbody id="pal-table-body">
-                            <!-- Data PAL dimasukkan lewat JS -->
+                            <!-- Data PAL diisi via JavaScript -->
                         </tbody>
                     </table>
                 </div>
@@ -432,65 +496,82 @@
         </div>
     </div>
 
-    <!-- FORMAT TEMPLATE CETAK PDF (KHUSUS DOWNLOAD / FORM GMF/Q-364 R1) -->
+    <!-- FORMAT TEMPLATE CETAK PRINT PDF FORM GMF/Q-364 R1 -->
     <div id="printable-area">
-        <div class="print-header-layout">
-            <div class="print-logo-box">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/GMF_AeroAsia_logo.svg/1200px-GMF_AeroAsia_logo.svg.png" alt="GMF AeroAsia Logo" onerror="this.style.display='none'">
-            </div>
-            <div class="print-title-box">
-                <div class="main-title">PERSONAL ABILITY LIST</div>
-                <div class="sub-title">GARUDA INDONESIA GROUP</div>
-            </div>
-            <div style="width: 170px;"></div> <!-- Perimbang tata letak header -->
-        </div>
-        
-        <table class="print-info-grid">
-            <tr>
-                <td class="lbl">Name</td>
-                <td style="width: 10px;">:</td>
-                <td id="print-nama">-</td>
-            </tr>
-            <tr>
-                <td class="lbl">Personnel Number</td>
-                <td>:</td>
-                <td id="print-id">-</td>
-            </tr>
-            <tr>
-                <td class="lbl">Present Title</td>
-                <td>:</td>
-                <td id="print-jabatan">-</td>
-            </tr>
-        </table>
-
-        <table class="print-pal-table">
+        <table class="print-table-main">
             <thead>
                 <tr>
-                    <th style="width: 35px;">No.</th>
-                    <th>DESCRIPTION</th>
-                    <th style="width: 160px;">PART NUMBER</th>
-                    <th style="width: 60px;">ATA</th>
-                    <th style="width: 120px;">RELATED AUTH</th>
+                    <td>
+                        <div class="print-header-layout">
+                            <div class="print-logo-box">
+                                <img src="https://lh3.googleusercontent.com/d/1xvTXFYJR1e6Nm8Cl2sktf8s63gq5xj1I" alt="GMF AeroAsia Logo">
+                            </div>
+                            <div class="print-title-box">
+                                <div class="main-title">PERSONAL ABILITY LIST</div>
+                                <div class="sub-title">GARUDA INDONESIA GROUP</div>
+                            </div>
+                            <div class="print-spacer"></div>
+                        </div>
+                        
+                        <table class="print-info-grid">
+                            <tr>
+                                <td class="lbl">Name</td>
+                                <td style="width: 10px;">:</td>
+                                <td id="print-nama">-</td>
+                            </tr>
+                            <tr>
+                                <td class="lbl">Personnel Number</td>
+                                <td>:</td>
+                                <td id="print-id">-</td>
+                            </tr>
+                            <tr>
+                                <td class="lbl">Present Title</td>
+                                <td>:</td>
+                                <td id="print-jabatan">-</td>
+                            </tr>
+                        </table>
+                    </td>
                 </tr>
             </thead>
-            <tbody id="print-pal-body">
-                <!-- Data cetak dimasukkan lewat JS -->
+
+            <tbody>
+                <tr>
+                    <td>
+                        <table class="print-pal-table">
+                            <thead>
+                                <tr>
+                                    <th class="col-no">No.</th>
+                                    <th class="col-desc">DESCRIPTION</th>
+                                    <th class="col-pn">PART NUMBER</th>
+                                    <th class="col-ata">ATA</th>
+                                    <th class="col-auth">RELATED AUTH</th>
+                                </tr>
+                            </thead>
+                            <tbody id="print-pal-body">
+                                <!-- Data PAL Cetak -->
+                            </tbody>
+                        </table>
+
+                        <div class="print-approval-container">
+                            <div class="print-approval-box">
+                                <div class="print-approval-title">Approved by Structure & Cabin Workshop<br>Division Head</div>
+                                <div style="margin-top: 4px; text-align: left;"><strong>Date:</strong> <span id="print-date">-</span></div>
+                                <div class="print-sig-space"></div>
+                                <div class="print-approval-name">ANDRYAN PUTRA</div>
+                                <div class="print-approval-sub">Name & Signature</div>
+                            </div>
+                        </div>
+
+                        <div class="footer-space"></div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 
-        <div class="print-footer-container">
-            <div class="print-approval-box">
-                <div class="print-approval-title">Approved by Structure & Cabin Workshop Division Head</div>
-                <div style="margin-top: 4px;"><strong>Date:</strong> <span id="print-date">-</span></div>
-                <div class="print-sig-space"></div> <!-- Area TTD Dibiarkan Kosong -->
-                <div class="print-approval-name">ANDRYAN PUTRA</div>
-                <div class="print-approval-sub">Name & Signature</div>
-            </div>
-
-            <div class="print-doc-footer">
-                <div>Form No.: GMF/Q-364 R1</div>
-                <div>Page 1</div>
-            </div>
+        <!-- FOOTER TETAP DI SETIAP HALAMAN -->
+        <div class="print-fixed-footer">
+            <div>Form No.: GMF/Q-364 R1</div>
+            <div class="page-number"></div>
         </div>
     </div>
 
@@ -606,18 +687,15 @@
                 id: id, nama: "Personil", jabatan: "-"
             };
 
-            // Pasang Informasi Profil ke Web Detail
             document.getElementById('detail-nama').innerText = selectedPerson.nama || "-";
             document.getElementById('detail-id').innerText = selectedPerson.id || "-";
             document.getElementById('detail-jabatan').innerText = selectedPerson.jabatan || "-";
             document.getElementById('detail-foto').src = selectedPerson.foto || selectedPerson.photo || "https://via.placeholder.com/90";
             document.getElementById('search-pal').value = '';
 
-            // Pindah Tampilan
             document.getElementById('view-personnel-list').classList.add('hidden');
             document.getElementById('view-personnel-detail').classList.remove('hidden');
 
-            // Ambil Data PAL dari Sheet Data_PAL via ID
             const tbody = document.getElementById('pal-table-body');
             tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 20px; color: #718096;">Memuat daftar kemampuan (PAL)...</td></tr>';
 
@@ -670,17 +748,14 @@
         function downloadPDF() {
             if (!selectedPerson) return;
 
-            // 1. Isi Header Profil Cetak
             document.getElementById('print-nama').innerText = selectedPerson.nama || "-";
             document.getElementById('print-id').innerText = selectedPerson.id || "-";
             document.getElementById('print-jabatan').innerText = selectedPerson.jabatan || "-";
 
-            // 2. Format & Isi Tanggal Hari Ini (Dinamis saat diunduh)
             const hariIni = new Date();
             const opsiTanggal = { day: '2-digit', month: 'short', year: 'numeric' };
             document.getElementById('print-date').innerText = hariIni.toLocaleDateString('en-GB', opsiTanggal);
 
-            // 3. Isi Tabel PAL Cetak
             const printTbody = document.getElementById('print-pal-body');
             printTbody.innerHTML = '';
 
@@ -690,18 +765,17 @@
                 activePALData.forEach((item, index) => {
                     const row = `
                         <tr>
-                            <td style="text-align:center;">${index + 1}</td>
-                            <td>${item.description || "-"}</td>
-                            <td>${item.part_number || "-"}</td>
-                            <td style="text-align:center;">${item.ata || "-"}</td>
-                            <td style="text-align:center;">${item.related_auth || "-"}</td>
+                            <td class="col-no">${index + 1}</td>
+                            <td class="col-desc">${item.description || "-"}</td>
+                            <td class="col-pn">${item.part_number || "-"}</td>
+                            <td class="col-ata">${item.ata || "-"}</td>
+                            <td class="col-auth">${item.related_auth || "-"}</td>
                         </tr>
                     `;
                     printTbody.innerHTML += row;
                 });
             }
 
-            // 4. Buka Dialog Print Browser
             window.print();
         }
 
