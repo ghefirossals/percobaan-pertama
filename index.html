@@ -335,10 +335,10 @@
             /* FOOTER 3 KOLOM RESMI (DITAMPILKAN FIKS DI TIAP-TIAP HALAMAN) */
             .print-footer-fixed {
                 position: fixed;
-                bottom: 0.4cm;
-                left: 1cm;
-                right: 1cm;
-                width: calc(100% - 2cm);
+                bottom: -3.6cm; /* Pakai MINUS agar footer turun ke area margin bawah */
+                left: 0.6cm;    /* Disamakan dengan margin kiri kertasmu */
+                right: 0.6cm;   /* Disamakan dengan margin kanan kertasmu */
+                width: calc(100% - 1.2cm);
                 background-color: #ffffff;
             }
 
@@ -353,12 +353,12 @@
                 border: 1px solid #000;
                 padding: 6px 10px;
                 vertical-align: top;
-                height: 65px;
+                height: 70px;
             }
 
-            .ft-col-date { width: 25%; }
-            .ft-col-approval { width: 50%; text-align: center; }
-            .ft-col-page { width: 25%; text-align: right; }
+            .ft-col-date { width: 15%; }
+            .ft-col-approval { width: 70%; text-align: center; }
+            .ft-col-page { width: 15%; text-align: right; }
 
             .print-external-form-no {
                 font-size: 10pt;
