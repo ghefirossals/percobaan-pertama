@@ -64,16 +64,74 @@
         .form-group input { width: 100%; padding: 12px; font-size: 14px; background-color: #ebf3fe; border: 1px solid #d3e3f8; border-radius: 8px; outline: none; }
         .password-wrapper { position: relative; display: flex; align-items: center; }
         .password-wrapper input { padding-right: 42px; }
-        .toggle-password { position: absolute; right: 12px; background: none; border: none; cursor: pointer; color: #718096; }
+        
+        .toggle-password { 
+            position: absolute; 
+            right: 12px; 
+            background: none; 
+            border: none; 
+            cursor: pointer; 
+            color: #718096; 
+            transition: color 0.2s ease;
+        }
+        .toggle-password:hover {
+            color: #1a202c;
+        }
 
         .btn-group { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
-        .btn { display: block; width: 100%; padding: 14px; font-size: 15px; font-weight: 600; border-radius: 8px; border: none; cursor: pointer; }
+        
+        /* CSS TOMBOL UTAMA & ANIMASI HOVER/KLIK */
+        .btn { 
+            display: block; 
+            width: 100%; 
+            padding: 14px; 
+            font-size: 15px; 
+            font-weight: 600; 
+            border-radius: 8px; 
+            border: none; 
+            cursor: pointer; 
+            transition: all 0.2s ease-in-out; 
+        }
         .btn-primary { background: linear-gradient(90deg, #004b73 0%, #115c44 100%); color: #ffffff; }
         .btn-secondary { background-color: #ebf3fe; color: #004b73; }
-        .btn-back { background: none; color: #718096; font-size: 13px; cursor: pointer; border: none; margin-top: 10px; }
+
+        .btn-primary:hover {
+            filter: brightness(0.85);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .btn-secondary:hover {
+            background-color: #dbe7f9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .btn:active {
+            transform: scale(0.98) !important;
+            filter: brightness(0.75) !important;
+        }
+
+        /* TOMBOL KEMBALI HARI LOGIN & ANIMASINYA */
+        .btn-back { 
+            background: none; 
+            color: #718096; 
+            font-size: 13px; 
+            cursor: pointer; 
+            border: none; 
+            margin-top: 14px; 
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+        .btn-back:hover {
+            color: #1a202c;
+            text-decoration: underline;
+        }
+        .btn-back:active {
+            transform: scale(0.95);
+        }
+
         .info-box { margin-top: 24px; font-size: 12px; color: #a0aec0; line-height: 1.5; }
         
-        /* PENTING: Class hidden dengan z-index & display none */
         .hidden { 
             display: none !important; 
         }
@@ -85,20 +143,66 @@
             color: #ffffff; padding: 14px 24px; display: flex;
             align-items: center; justify-content: space-between;
         }
+        
         .btn-logout-nav, .btn-back-nav {
             background-color: #ffffff; color: #004b73; border: none;
             padding: 8px 16px; border-radius: 6px; font-size: 12px;
             font-weight: 600; cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-logout-nav:hover, .btn-back-nav:hover {
+            background-color: #ebf3fe;
+            transform: translateY(-1px);
+        }
+        .btn-logout-nav:active, .btn-back-nav:active {
+            transform: scale(0.95);
         }
 
+        /* KARTU TCR 1-5 & ANIMASI POP-UP */
         .cards-container {
             display: grid; grid-template-columns: repeat(3, 1fr);
             gap: 28px; padding: 40px 24px; max-width: 1100px; margin: 20px auto 40px auto;
         }
-        .tcr-card { background-color: #ffffff; border-radius: 14px; padding: 32px 24px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); border: 1px solid #e2e8f0; text-align: center; }
+        
+        .tcr-card { 
+            background-color: #ffffff; 
+            border-radius: 14px; 
+            padding: 32px 24px; 
+            box-shadow: 0 4px 18px rgba(0,0,0,0.06); 
+            border: 1px solid #e2e8f0; 
+            text-align: center; 
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        
+        .tcr-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+        }
+
         .tcr-title { font-size: 22px; font-weight: 700; color: #004b73; margin-bottom: 10px; }
         .tcr-subtitle { font-size: 13px; font-weight: 600; color: #718096; margin-bottom: 28px; }
-        .btn-card-action { background: linear-gradient(90deg, #004b73 0%, #115c44 100%); color: #ffffff; border: none; padding: 12px 20px; font-size: 13px; font-weight: 600; border-radius: 8px; cursor: pointer; width: 100%; }
+        
+        .btn-card-action { 
+            background: linear-gradient(90deg, #004b73 0%, #115c44 100%); 
+            color: #ffffff; 
+            border: none; 
+            padding: 12px 20px; 
+            font-size: 13px; 
+            font-weight: 600; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            width: 100%; 
+            transition: all 0.2s ease-in-out;
+        }
+        
+        .btn-card-action:hover {
+            filter: brightness(0.85);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+        .btn-card-action:active {
+            transform: scale(0.97);
+            filter: brightness(0.75);
+        }
 
         .personnel-grid {
             display: grid;
@@ -174,7 +278,7 @@
                         <div class="password-wrapper">
                             <input type="password" id="userPassword" placeholder="Masukkan Password" required>
                             <button type="button" class="toggle-password" onclick="togglePasswordVisibility()">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
                             </button>
                         </div>
                     </div>
@@ -321,9 +425,26 @@
             alert("Login berhasil untuk ID: " + id);
         }
 
+        // FUNGSI MATA TERCORET DIPERBAIKI
         function togglePasswordVisibility() {
             const passwordInput = document.getElementById('userPassword');
-            passwordInput.type = (passwordInput.type === 'password') ? 'text' : 'password';
+            const eyeIcon = document.getElementById('eye-icon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                // Ganti ke Ikon Mata Tercoret
+                eyeIcon.innerHTML = `
+                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                `;
+            } else {
+                passwordInput.type = 'password';
+                // Kembalikan ke Ikon Mata Normal
+                eyeIcon.innerHTML = `
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                `;
+            }
         }
 
         function updateTanggal() {
