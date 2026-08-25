@@ -247,7 +247,7 @@
 
             @page { 
                 size: A4 portrait; 
-                margin: 0.6cm 0.6cm 4.2cm 0.6cm;
+                margin: 0.6cm;
             }
 
             /* BINGKAI LUAR SETIAP HALAMAN */
@@ -347,7 +347,8 @@
                 border-collapse: collapse;
                 font-size: 10pt;
                 border: 1px solid #000;
-            }
+                background-color: #ffffff;
+                page-break-inside: avoid; /* Mencegah footer terpotong di tengah jalan */
 
             .print-footer-table td {
                 border: 1px solid #000;
@@ -523,16 +524,17 @@
     <div id="printable-area">
         <div class="print-outer-box">
             <table class="print-table-main">
+                <!-- 1. HEADER CETAK -->
                 <thead>
                     <tr>
                         <td>
-                            <!-- HEADER CETAK REVISI (TENGAN, MAKS 2.5x11.5 CM, FONT 14PT) -->
+                            <!-- HEADER CETAK REVISI -->
                             <div class="print-header-layout">
                                 <img src="https://lh3.googleusercontent.com/d/1xvTXFYJR1e6Nm8Cl2sktf8s63gq5xj1I" alt="GMFAeroAsia Logo" class="print-header-logo">
                                 <div class="print-header-title">PERSONNEL ABILITY LIST</div>
                             </div>
-                            
-                            <!-- DATA PERSONIL (UKURAN FONT 14PT) -->
+                        
+                            <!-- DATA PERSONIL -->
                             <table class="print-person-grid">
                                 <tr>
                                     <td class="lbl">Name</td>
@@ -554,10 +556,10 @@
                     </tr>
                 </thead>
 
+                <!-- 2. TABEL LIST UTAMA -->
                 <tbody>
                     <tr>
                         <td>
-                            <!-- TABEL PAL 5 KOLOM (UKURAN FONT 14PT) -->
                             <table class="print-pal-table">
                                 <thead>
                                     <tr>
@@ -575,30 +577,33 @@
                         </td>
                     </tr>
                 </tbody>
-            </table>
-        </div>
 
-        <!-- FOOTER 3 KOLOM BERBINGKAI FIKS DI TIAP-TIAP HALAMAN -->
-        <div class="print-footer-fixed">
-            <table class="print-footer-table">
-                <tr>
-                    <td class="ft-col-date">
-                        <strong>Date:</strong><br>
-                        <span id="print-date">-</span>
-                    </td>
-                    <td class="ft-col-approval">
-                        <strong>Approved by Structure & Cabin Workshop Divison Head</strong><br><br>
-                        <span style="font-size: 8pt; color: #555;">Name & Signature</span>
-                    </td>
-                    <td class="ft-col-page">
-                        <span class="page-number-text"></span>
-                    </td>
-                </tr>
+                <!-- 3. FOOTER (DIPINDAH KE DALAM TFOOT SINI) -->
+                <tfoot>
+                    <tr>
+                        <td style="padding-top: 15px;">
+                            <table class="print-footer-table">
+                                <tr>
+                                    <td class="ft-col-date">
+                                        <strong>Date:</strong><br>
+                                        <span id="print-date">-</span>
+                                    </td>
+                                    <td class="ft-col-approval">
+                                        <strong>Approved by Structure & Cabin Workshop Divison Head</strong><br><br>
+                                        <span style="font-size: 8pt; color: #555;">Name & Signature</span>
+                                    </td>
+                                    <td class="ft-col-page">
+                                    <span class="page-number-text"></span>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="print-external-form-no">Form No.: GMF/Q-364 R1</div>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
-            <div class="print-external-form-no">Form No.: GMF/Q-364 R1</div>
         </div>
     </div>
-
     <script>
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyggMH6lNMKlDnxgPmr-CTS-OGkziPEonAtgteQoKuOzMF2bRSBghLUWmJXmqGA22QP/exec";
         
