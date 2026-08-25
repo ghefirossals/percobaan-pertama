@@ -74,9 +74,7 @@
             color: #718096; 
             transition: color 0.2s ease;
         }
-        .toggle-password:hover {
-            color: #1a202c;
-        }
+        .toggle-password:hover { color: #1a202c; }
 
         .btn-group { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
         
@@ -112,7 +110,6 @@
             filter: brightness(0.75) !important;
         }
 
-        /* TOMBOL KEMBALI HARI LOGIN & ANIMASINYA */
         .btn-back { 
             background: none; 
             color: #718096; 
@@ -122,41 +119,44 @@
             margin-top: 14px; 
             transition: color 0.2s ease, transform 0.2s ease;
         }
-        .btn-back:hover {
-            color: #1a202c;
-            text-decoration: underline;
-        }
-        .btn-back:active {
-            transform: scale(0.95);
-        }
+        .btn-back:hover { color: #1a202c; text-decoration: underline; }
+        .btn-back:active { transform: scale(0.95); }
 
         .info-box { margin-top: 24px; font-size: 12px; color: #a0aec0; line-height: 1.5; }
         
-        .hidden { 
-            display: none !important; 
-        }
+        .hidden { display: none !important; }
         
-        #view-dashboard, #view-personnel-list { width: 100%; }
+        #view-dashboard, #view-personnel-list, #view-personnel-detail { width: 100%; }
+        
         .navbar-top {
             position: sticky; top: 0; z-index: 1000; width: 100%;
             background: linear-gradient(90deg, #004b73 0%, #115c44 100%);
             color: #ffffff; padding: 14px 24px; display: flex;
             align-items: center; justify-content: space-between;
+            gap: 15px; flex-wrap: wrap;
         }
         
-        .btn-logout-nav, .btn-back-nav {
+        .navbar-left { display: flex; align-items: center; gap: 15px; }
+
+        .btn-logout-nav, .btn-back-nav, .btn-download-nav {
             background-color: #ffffff; color: #004b73; border: none;
             padding: 8px 16px; border-radius: 6px; font-size: 12px;
             font-weight: 600; cursor: pointer;
             transition: all 0.2s ease;
         }
-        .btn-logout-nav:hover, .btn-back-nav:hover {
-            background-color: #ebf3fe;
-            transform: translateY(-1px);
+        .btn-download-nav { background-color: #27ae60; color: #ffffff; }
+        .btn-logout-nav:hover, .btn-back-nav:hover { background-color: #ebf3fe; transform: translateY(-1px); }
+        .btn-download-nav:hover { background-color: #219653; transform: translateY(-1px); }
+        .btn-logout-nav:active, .btn-back-nav:active, .btn-download-nav:active { transform: scale(0.95); }
+
+        /* SEARCH INPUT NAVBAR */
+        .search-nav-input {
+            padding: 8px 14px; font-size: 13px; border-radius: 20px;
+            border: none; outline: none; min-width: 220px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #333; transition: all 0.2s ease;
         }
-        .btn-logout-nav:active, .btn-back-nav:active {
-            transform: scale(0.95);
-        }
+        .search-nav-input:focus { background-color: #ffffff; box-shadow: 0 0 8px rgba(255,255,255,0.5); }
 
         /* KARTU TCR 1-5 & ANIMASI POP-UP */
         .cards-container {
@@ -174,77 +174,90 @@
             transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
         
-        .tcr-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
-        }
+        .tcr-card:hover { transform: translateY(-6px); box-shadow: 0 12px 25px rgba(0,0,0,0.12); }
 
         .tcr-title { font-size: 22px; font-weight: 700; color: #004b73; margin-bottom: 10px; }
         .tcr-subtitle { font-size: 13px; font-weight: 600; color: #718096; margin-bottom: 28px; }
         
         .btn-card-action { 
             background: linear-gradient(90deg, #004b73 0%, #115c44 100%); 
-            color: #ffffff; 
-            border: none; 
-            padding: 12px 20px; 
-            font-size: 13px; 
-            font-weight: 600; 
-            border-radius: 8px; 
-            cursor: pointer; 
-            width: 100%; 
-            transition: all 0.2s ease-in-out;
+            color: #ffffff; border: none; padding: 12px 20px; 
+            font-size: 13px; font-weight: 600; border-radius: 8px; 
+            cursor: pointer; width: 100%; transition: all 0.2s ease-in-out;
         }
         
-        .btn-card-action:hover {
-            filter: brightness(0.85);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-        }
-        .btn-card-action:active {
-            transform: scale(0.97);
-            filter: brightness(0.75);
-        }
+        .btn-card-action:hover { filter: brightness(0.85); box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
+        .btn-card-action:active { transform: scale(0.97); filter: brightness(0.75); }
 
         .personnel-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px;
-            padding: 30px 24px;
-            max-width: 1200px;
-            margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px; padding: 30px 24px; max-width: 1200px; margin: 0 auto;
         }
 
         .person-card {
-            background-color: #ffffff;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            border: 1px solid #e2e8f0;
-            text-align: center;
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            background-color: #ffffff; border-radius: 12px; padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); border: 1px solid #e2e8f0;
+            text-align: center; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-
-        .person-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
+        .person-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); }
 
         .avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 0 auto 12px auto;
-            border: 3px solid #ebf3fe;
-            background-color: #e2e8f0;
+            width: 80px; height: 80px; border-radius: 50%; object-fit: cover;
+            margin: 0 auto 12px auto; border: 3px solid #ebf3fe; background-color: #e2e8f0;
         }
 
         .person-name { font-size: 15px; font-weight: 700; color: #1a202c; margin-bottom: 4px; }
         .person-id { font-size: 12px; font-weight: 600; color: #004b73; background-color: #ebf3fe; display: inline-block; padding: 2px 8px; border-radius: 4px; margin-bottom: 8px; }
         .person-role { font-size: 12px; color: #718096; }
 
+        /* PROFILE HEADER & PAL TABLE STYLING */
+        .profile-container { max-width: 1100px; margin: 30px auto; padding: 0 24px; }
+        .profile-header-card {
+            background: #ffffff; border-radius: 12px; padding: 24px;
+            display: flex; align-items: center; gap: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; margin-bottom: 24px;
+        }
+        .profile-header-avatar { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid #004b73; }
+        .profile-header-info h2 { font-size: 22px; color: #1a202c; margin-bottom: 4px; }
+        .profile-header-info p { font-size: 14px; color: #718096; margin-bottom: 4px; }
+        
+        .pal-table-wrapper {
+            background: #ffffff; border-radius: 12px; padding: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;
+        }
+        .pal-search-box { width: 100%; padding: 12px 16px; font-size: 14px; border: 1px solid #cbd5e0; border-radius: 8px; margin-bottom: 20px; outline: none; }
+        
+        .web-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; }
+        .web-table th { background-color: #ebf3fe; color: #004b73; padding: 12px; border-bottom: 2px solid #cbd5e0; }
+        .web-table td { padding: 12px; border-bottom: 1px solid #e2e8f0; color: #2d3748; }
+        .web-table tr:hover { background-color: #f7fafc; }
+
+        /* TEMPLATE KHUSUS PRINT PDF (Sembunyi di Web View) */
+        #printable-area { display: none; }
+
+        @media print {
+            body * { visibility: hidden; }
+            #printable-area, #printable-area * { visibility: visible; }
+            #printable-area {
+                display: block !important;
+                position: absolute; left: 0; top: 0; width: 100%; padding: 20px; color: #000;
+            }
+            .print-header-logo { text-align: center; margin-bottom: 15px; }
+            .print-header-logo img { width: 180px; height: auto; }
+            .print-doc-title { text-align: center; font-size: 16pt; font-weight: bold; margin-bottom: 20px; text-transform: uppercase; }
+            .print-info-table { width: 100%; margin-bottom: 20px; font-size: 11pt; border-collapse: collapse; }
+            .print-info-table td { padding: 4px 8px; vertical-align: top; }
+            .print-pal-table { width: 100%; border-collapse: collapse; font-size: 10pt; }
+            .print-pal-table th, .print-pal-table td { border: 1px solid #000; padding: 6px 8px; text-align: left; }
+            .print-pal-table th { background-color: #f0f0f0 !important; -webkit-print-color-adjust: exact; text-align: center; }
+            @page { size: A4 portrait; margin: 1.5cm; }
+        }
+
         @media (max-width: 900px) { .cards-container { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 600px) { .cards-container { grid-template-columns: 1fr; } }
+        @media (max-width: 600px) { 
+            .cards-container { grid-template-columns: 1fr; } 
+            .profile-header-card { flex-direction: column; text-align: center; }
+        }
     </style>
 </head>
 <body>
@@ -331,22 +344,118 @@
     <!-- LIST PERSONIL -->
     <div id="view-personnel-list" class="hidden">
         <header class="navbar-top">
+            <div class="navbar-left">
+                <button type="button" class="btn-back-nav" onclick="kembaliKeDashboard()">← Dashboard</button>
+                <span id="tcr-page-title" style="font-weight: bold; font-size: 18px;">Daftar Personil</span>
+            </div>
             <div>
-                <button type="button" class="btn-back-nav" onclick="kembaliKeDashboard()">← Kembali ke Dashboard</button>
-                <span id="tcr-page-title" style="font-weight: bold; font-size: 18px; margin-left: 15px;">Daftar Personil</span>
+                <input type="text" id="search-personnel" class="search-nav-input" placeholder="Cari Nama / ID..." onkeyup="filterPersonil()">
             </div>
         </header>
 
         <div id="personnel-container" class="personnel-grid"></div>
     </div>
 
+    <!-- DETAIL PERSONIL & PAL WEB VIEW -->
+    <div id="view-personnel-detail" class="hidden">
+        <header class="navbar-top">
+            <div class="navbar-left">
+                <button type="button" class="btn-back-nav" onclick="kembaliKeDaftarPersonil()">← Kembali</button>
+                <span style="font-weight: bold; font-size: 18px;">Personal Ability List</span>
+            </div>
+            <div>
+                <button type="button" class="btn-download-nav" onclick="downloadPDF()">Download PDF</button>
+            </div>
+        </header>
+
+        <div class="profile-container">
+            <!-- HEADER PROFIL WEB -->
+            <div class="profile-header-card">
+                <img id="detail-foto" src="" alt="Foto" class="profile-header-avatar" onerror="this.src='https://via.placeholder.com/90'">
+                <div class="profile-header-info">
+                    <h2 id="detail-nama">-</h2>
+                    <p><strong>Personnel ID:</strong> <span id="detail-id">-</span></p>
+                    <p><strong>Present Title:</strong> <span id="detail-jabatan">-</span></p>
+                </div>
+            </div>
+
+            <!-- TABEL PAL WEB -->
+            <div class="pal-table-wrapper">
+                <input type="text" id="search-pal" class="pal-search-box" placeholder="Cari Part Number atau Deskripsi..." onkeyup="filterPAL()">
+                <div style="overflow-x: auto;">
+                    <table class="web-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 50px; text-align: center;">No.</th>
+                                <th>DESCRIPTION</th>
+                                <th>PART NUMBER</th>
+                                <th>ATA</th>
+                                <th>RELATED AUTH</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pal-table-body">
+                            <!-- Data PAL dimasukkan lewat JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FORMAT TEMPLATE CETAK PDF (KHUSUS DOWNLOAD) -->
+    <div id="printable-area">
+        <div class="print-header-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/GMF_AeroAsia_logo.svg/1200px-GMF_AeroAsia_logo.svg.png" alt="GMF AeroAsia Logo" onerror="this.style.display='none'">
+        </div>
+        <div class="print-doc-title">PERSONAL ABILITY LIST</div>
+        
+        <table class="print-info-table">
+            <tr>
+                <td style="width: 160px; font-weight: bold;">Name</td>
+                <td style="width: 10px;">:</td>
+                <td id="print-nama">-</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Personnel Number</td>
+                <td>:</td>
+                <td id="print-id">-</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Present Title</td>
+                <td>:</td>
+                <td id="print-jabatan">-</td>
+            </tr>
+        </table>
+
+        <table class="print-pal-table">
+            <thead>
+                <tr>
+                    <th style="width: 40px;">No.</th>
+                    <th>DESCRIPTION</th>
+                    <th>PART NUMBER</th>
+                    <th>ATA</th>
+                    <th>RELATED AUTH</th>
+                </tr>
+            </thead>
+            <tbody id="print-pal-body">
+                <!-- Data cetak dimasukkan lewat JS -->
+            </tbody>
+        </table>
+    </div>
+
     <script>
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyggMH6lNMKlDnxgPmr-CTS-OGkziPEonAtgteQoKuOzMF2bRSBghLUWmJXmqGA22QP/exec";
+        
+        let activePersonnelData = [];
+        let activePALData = [];
+        let selectedPerson = null;
+        let currentTCRNumber = 1;
 
         function aksesTamu() {
             document.getElementById('auth-section').classList.add('hidden');
             document.getElementById('view-dashboard').classList.remove('hidden');
             document.getElementById('view-personnel-list').classList.add('hidden');
+            document.getElementById('view-personnel-detail').classList.add('hidden');
         }
 
         function bukaHalamanUtama() {
@@ -355,6 +464,7 @@
             document.getElementById('view-login').classList.add('hidden');
             document.getElementById('view-dashboard').classList.add('hidden');
             document.getElementById('view-personnel-list').classList.add('hidden');
+            document.getElementById('view-personnel-detail').classList.add('hidden');
         }
 
         function bukaHalamanLogin() {
@@ -364,50 +474,38 @@
 
         function kembaliKeDashboard() {
             document.getElementById('view-personnel-list').classList.add('hidden');
+            document.getElementById('view-personnel-detail').classList.add('hidden');
             document.getElementById('view-dashboard').classList.remove('hidden');
         }
 
+        function kembaliKeDaftarPersonil() {
+            document.getElementById('view-personnel-detail').classList.add('hidden');
+            document.getElementById('view-personnel-list').classList.remove('hidden');
+        }
+
         function bukaTCR(nomorTCR) {
+            currentTCRNumber = nomorTCR;
             const sheetName = "TCR" + nomorTCR; 
             
             document.getElementById('auth-section').classList.add('hidden');
             document.getElementById('view-dashboard').classList.add('hidden');
+            document.getElementById('view-personnel-detail').classList.add('hidden');
             document.getElementById('view-personnel-list').classList.remove('hidden');
             document.getElementById('tcr-page-title').innerText = "Daftar Personil TCR " + nomorTCR;
+            document.getElementById('search-personnel').value = '';
             
             const container = document.getElementById('personnel-container');
             container.innerHTML = '<p style="text-align:center; grid-column: 1/-1; padding: 40px; color: #718096;">Memuat data dari Google Sheets...</p>';
 
-            if (!SCRIPT_URL || SCRIPT_URL.includes("PASANG_URL_WEB_APP")) {
-                container.innerHTML = '<p style="text-align:center; color:#e53e3e; grid-column: 1/-1; padding: 40px;">URL Google Apps Script belum dipasang di JavaScript.</p>';
-                return;
-            }
-
             fetch(`${SCRIPT_URL}?sheet=${sheetName}`)
                 .then(response => response.json())
                 .then(data => {
-                    container.innerHTML = ''; 
                     if (!data || data.length === 0 || data.error) {
                         container.innerHTML = '<p style="text-align:center; grid-column: 1/-1; padding: 40px; color: #e53e3e;">Data tidak ditemukan pada Sheet.</p>';
                         return;
                     }
-
-                    data.forEach(person => {
-                        const nama = person.nama || "Tanpa Nama";
-                        const id = person.id || "-";
-                        const jabatan = person.jabatan || "-";
-                        const foto = person.foto || person.photo || "https://via.placeholder.com/80";
-
-                        const cardHtml = `
-                            <div class="person-card" onclick="bukaDetailPersonil('${id}')">
-                                <img src="${foto}" alt="${nama}" class="avatar" onerror="this.src='https://via.placeholder.com/80'">
-                                <div class="person-name">${nama}</div>
-                                <div class="person-id">ID: ${id}</div>
-                                <div class="person-role">${jabatan}</div>
-                            </div>
-                        `;
-                        container.innerHTML += cardHtml;
-                    });
+                    activePersonnelData = data;
+                    renderPersonil(data);
                 })
                 .catch(error => {
                     console.error("Error:", error);
@@ -415,8 +513,139 @@
                 });
         }
 
+        function renderPersonil(dataList) {
+            const container = document.getElementById('personnel-container');
+            container.innerHTML = '';
+
+            if (dataList.length === 0) {
+                container.innerHTML = '<p style="text-align:center; grid-column: 1/-1; padding: 40px; color: #718096;">Personil tidak ditemukan.</p>';
+                return;
+            }
+
+            dataList.forEach(person => {
+                const nama = person.nama || "Tanpa Nama";
+                const id = person.id || "-";
+                const jabatan = person.jabatan || "-";
+                const foto = person.foto || person.photo || "https://via.placeholder.com/80";
+
+                const cardHtml = `
+                    <div class="person-card" onclick="bukaDetailPersonil('${id}')">
+                        <img src="${foto}" alt="${nama}" class="avatar" onerror="this.src='https://via.placeholder.com/80'">
+                        <div class="person-name">${nama}</div>
+                        <div class="person-id">ID: ${id}</div>
+                        <div class="person-role">${jabatan}</div>
+                    </div>
+                `;
+                container.innerHTML += cardHtml;
+            });
+        }
+
+        function filterPersonil() {
+            const keyword = document.getElementById('search-personnel').value.toLowerCase();
+            const filtered = activePersonnelData.filter(p => {
+                const nama = (p.nama || "").toLowerCase();
+                const id = String(p.id || "").toLowerCase();
+                return nama.includes(keyword) || id.includes(keyword);
+            });
+            renderPersonil(filtered);
+        }
+
         function bukaDetailPersonil(id) {
-            alert("Membuka Detail Personil ID: " + id);
+            selectedPerson = activePersonnelData.find(p => String(p.id).trim() === String(id).trim()) || {
+                id: id, nama: "Personil", jabatan: "-"
+            };
+
+            // Pasang Informasi Profil ke Web Detail
+            document.getElementById('detail-nama').innerText = selectedPerson.nama || "-";
+            document.getElementById('detail-id').innerText = selectedPerson.id || "-";
+            document.getElementById('detail-jabatan').innerText = selectedPerson.jabatan || "-";
+            document.getElementById('detail-foto').src = selectedPerson.foto || selectedPerson.photo || "https://via.placeholder.com/90";
+            document.getElementById('search-pal').value = '';
+
+            // Pindah Tampilan
+            document.getElementById('view-personnel-list').classList.add('hidden');
+            document.getElementById('view-personnel-detail').classList.remove('hidden');
+
+            // Ambil Data PAL dari Sheet Data_PAL via ID
+            const tbody = document.getElementById('pal-table-body');
+            tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 20px; color: #718096;">Memuat daftar kemampuan (PAL)...</td></tr>';
+
+            fetch(`${SCRIPT_URL}?sheet=Data_PAL&id=${id}`)
+                .then(response => response.json())
+                .then(palData => {
+                    activePALData = Array.isArray(palData) ? palData : [];
+                    renderPALTable(activePALData);
+                })
+                .catch(err => {
+                    console.error("Error PAL:", err);
+                    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 20px; color: #e53e3e;">Gagal memuat data PAL.</td></tr>';
+                });
+        }
+
+        function renderPALTable(dataList) {
+            const tbody = document.getElementById('pal-table-body');
+            tbody.innerHTML = '';
+
+            if (dataList.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 20px; color: #718096;">Belum ada daftar PAL untuk personil ini.</td></tr>';
+                return;
+            }
+
+            dataList.forEach((item, index) => {
+                const tr = `
+                    <tr>
+                        <td style="text-align: center;">${index + 1}</td>
+                        <td>${item.description || "-"}</td>
+                        <td><strong>${item.part_number || "-"}</strong></td>
+                        <td>${item.ata || "-"}</td>
+                        <td>${item.related_auth || "-"}</td>
+                    </tr>
+                `;
+                tbody.innerHTML += tr;
+            });
+        }
+
+        function filterPAL() {
+            const keyword = document.getElementById('search-pal').value.toLowerCase();
+            const filtered = activePALData.filter(item => {
+                const desc = (item.description || "").toLowerCase();
+                const pn = (item.part_number || "").toLowerCase();
+                const ata = (item.ata || "").toLowerCase();
+                return desc.includes(keyword) || pn.includes(keyword) || ata.includes(keyword);
+            });
+            renderPALTable(filtered);
+        }
+
+        function downloadPDF() {
+            if (!selectedPerson) return;
+
+            // Isi Template Cetak
+            document.getElementById('print-nama').innerText = selectedPerson.nama || "-";
+            document.getElementById('print-id').innerText = selectedPerson.id || "-";
+            document.getElementById('print-jabatan').innerText = selectedPerson.jabatan || "-";
+
+            const printTbody = document.getElementById('print-pal-body');
+            printTbody.innerHTML = '';
+
+            if (activePALData.length === 0) {
+                printTbody.innerHTML = '<tr><td colspan="5" style="text-align:center;">Tidak ada data PAL</td></tr>';
+            } else {
+                activePALData.forEach((item, index) => {
+                    const row = `
+                        <tr>
+                            <td style="text-align:center;">${index + 1}</td>
+                            <td>${item.description || "-"}</td>
+                            <td>${item.part_number || "-"}</td>
+                            <td style="text-align:center;">${item.ata || "-"}</td>
+                            <td style="text-align:center;">${item.related_auth || "-"}</td>
+                        </tr>
+                    `;
+                    printTbody.innerHTML += row;
+                });
+            }
+
+            // Jalankan window print (pengguna bisa Save as PDF)
+            window.print();
         }
 
         function prosesLogin(event) {
@@ -425,21 +654,18 @@
             alert("Login berhasil untuk ID: " + id);
         }
 
-        // FUNGSI MATA TERCORET DIPERBAIKI
         function togglePasswordVisibility() {
             const passwordInput = document.getElementById('userPassword');
             const eyeIcon = document.getElementById('eye-icon');
             
             if (passwordInput.type === 'password') {
                 passwordInput.type = 'text';
-                // Ganti ke Ikon Mata Tercoret
                 eyeIcon.innerHTML = `
                     <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
                     <line x1="1" y1="1" x2="23" y2="23"></line>
                 `;
             } else {
                 passwordInput.type = 'password';
-                // Kembalikan ke Ikon Mata Normal
                 eyeIcon.innerHTML = `
                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                     <circle cx="12" cy="12" r="3"></circle>
